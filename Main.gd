@@ -9,7 +9,7 @@ func _ready():
 	memory_game = preload("res://memory/MemoryGameMain.tscn")
 	memory_game_instance = memory_game.instance()
 	
-	egg_yeeter_game = preload("res://minigames/yeeter/yeeter.tscn")
+	egg_yeeter_game = preload("res://yeeter/yeeter.tscn")
 	egg_yeeter_game_instance = egg_yeeter_game.instance()
 	# instantiate other minigames
 
@@ -18,7 +18,7 @@ func _hide_main_screen():
 	$EggYeeterButton.hide()
 	# add the other buttons to hide here
 
-func _show_main_screen():
+func show_main_screen():
 	$MemoryGameButton.show()
 	$EggYeeterButton.show()
 	memory_game_instance = memory_game.instance()

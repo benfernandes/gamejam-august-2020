@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/nest.svg-346475f935c3a6f9a3a839be4a9eb740.stex"
+path="res://.import/basic-bird-sitting.svg-d1be9578d7734262fa2e1e9b8d59af60.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/yeeter/entities/nest/assets/nest.svg"
-dest_files=[ "res://.import/nest.svg-346475f935c3a6f9a3a839be4a9eb740.stex" ]
+source_file="res://yeeter/entities/bird_cannon/assets/basic-bird-sitting.svg"
+dest_files=[ "res://.import/basic-bird-sitting.svg-d1be9578d7734262fa2e1e9b8d59af60.stex" ]
 
 [params]
 

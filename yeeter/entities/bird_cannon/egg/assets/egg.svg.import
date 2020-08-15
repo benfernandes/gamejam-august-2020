@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/egg.svg-303b9baf9f8c138f7bad54accd8fb977.stex"
+path="res://.import/egg.svg-2fd161bebce86717836797b5bcc17584.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/yeeter/entities/bird_cannon/egg/assets/egg.svg"
-dest_files=[ "res://.import/egg.svg-303b9baf9f8c138f7bad54accd8fb977.stex" ]
+source_file="res://yeeter/entities/bird_cannon/egg/assets/egg.svg"
+dest_files=[ "res://.import/egg.svg-2fd161bebce86717836797b5bcc17584.stex" ]
 
 [params]
 

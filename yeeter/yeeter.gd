@@ -15,3 +15,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_up"):
 		print("Number of eggs")
 		print(get_tree().get_nodes_in_group("eggs").size())
+
+func _on_remaining_none_remaining():
+	get_parent().show_main_screen()
+	queue_free()
