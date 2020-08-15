@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://minigames/yeeter/entities/bird_cannon/bird_cannon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/background-v1.png" type="Texture" id=2]
+[ext_resource path="res://minigames/yeeter/entities/power_bar/power_bar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://minigames/yeeter/entities/nest/nest.tscn" type="PackedScene" id=4]
+
+[node name="yeeter" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( 361.185, 241.832 )
+scale = Vector2( 0.402234, 0.402234 )
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D" parent="sprite" instance=ExtResource( 4 )]
+position = Vector2( 429.82, 16.7245 )
+
+[node name="bird_cannon" parent="." instance=ExtResource( 1 )]
+position = Vector2( 196.413, 379.088 )
+egg_spawn_path = NodePath("../../yeeter/bird_cannon/egg_spawn")
+power_bar_path = NodePath("../power_bar")
+
+[node name="power_bar" parent="." instance=ExtResource( 3 )]
+margin_left = 67.2392
+margin_top = 421.818
+margin_right = 414.239
+margin_bottom = 460.818
+bird_cannon_path = NodePath("../bird_cannon")

@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Gamejam-August-2020"
+run/main_scene="res://minigames/yeeter/yeeter.tscn"
 config/icon="res://icon.png"
 
 [display]
