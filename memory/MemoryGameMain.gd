@@ -33,7 +33,7 @@ func game_over():
 	end_timer.start()
 	
 	yield(end_timer, "timeout")
-	get_parent()._show_main_screen()
+	get_parent().show_main_screen()
 	queue_free()
 
 func _on_SecondTicker_timeout():

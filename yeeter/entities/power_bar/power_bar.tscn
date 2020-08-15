@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://yeeter/entities/power_bar/power_bar.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.933333, 0.101961, 0.101961, 1 )
+
+[node name="power_bar" type="ProgressBar"]
+margin_left = 121.057
+margin_top = 376.746
+margin_right = 468.057
+margin_bottom = 415.746
+rect_rotation = -90.0
+custom_styles/fg = SubResource( 1 )
+percent_visible = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
