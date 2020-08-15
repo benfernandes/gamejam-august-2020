@@ -29,3 +29,6 @@ func on_click():
 			get_parent().selected_card2_image = card_name
 			get_parent().selected_card2 = name
 			get_parent().check_if_match()
+
+func show_front_image():
+	get_node("Sprite").texture = front_image

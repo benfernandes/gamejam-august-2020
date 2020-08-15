@@ -1,54 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://memory/MemoryGame.gd" type="Script" id=1]
 [ext_resource path="res://memory/Card.gd" type="Script" id=3]
 
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0 )
-colors = PoolColorArray( 0.270588, 0.270588, 0.270588, 1 )
-
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
-width = 280
-
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 49.952, 48.698 )
 
 [node name="Board" type="Node2D"]
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""
-}
-
-[node name="InfoContainer" type="TextureRect" parent="."]
-margin_left = 224.0
-margin_top = 352.0
-margin_right = 504.0
-margin_bottom = 448.0
-texture = SubResource( 2 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MatchesFound" type="Label" parent="."]
-margin_left = 304.0
-margin_top = 416.0
-margin_right = 409.0
-margin_bottom = 430.0
-text = "Matches Found: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NumberMatchesFound" type="Label" parent="."]
-margin_left = 416.0
-margin_top = 416.0
-margin_right = 521.0
-margin_bottom = 430.0
-text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
 }
 
 [node name="Card0" type="Area2D" parent="."]
@@ -63,7 +24,7 @@ __meta__ = {
 position = Vector2( 128.441, 288.027 )
 scale = Vector2( 0.64, 0.64 )
 z_index = 1
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Card0"]
 position = Vector2( 128.653, 288.09 )
@@ -81,7 +42,7 @@ __meta__ = {
 position = Vector2( 128.441, 288.027 )
 scale = Vector2( 0.64, 0.64 )
 z_index = 1
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Card1"]
 position = Vector2( 128.653, 288.09 )
@@ -99,7 +60,7 @@ __meta__ = {
 position = Vector2( 128.441, 288.027 )
 scale = Vector2( 0.64, 0.64 )
 z_index = 1
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Card2"]
 position = Vector2( 128.653, 288.09 )
@@ -117,7 +78,7 @@ __meta__ = {
 position = Vector2( 128.441, 288.027 )
 scale = Vector2( 0.64, 0.64 )
 z_index = 1
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Card3"]
 position = Vector2( 128.653, 288.09 )
@@ -135,7 +96,7 @@ __meta__ = {
 position = Vector2( 128.441, 288.027 )
 scale = Vector2( 0.64, 0.64 )
 z_index = 1
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Card4"]
 position = Vector2( 128.653, 288.09 )
@@ -153,7 +114,7 @@ __meta__ = {
 position = Vector2( 128.441, 288.027 )
 scale = Vector2( 0.64, 0.64 )
 z_index = 1
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Card5"]
 position = Vector2( 128.653, 288.09 )
@@ -171,7 +132,7 @@ __meta__ = {
 position = Vector2( 128.441, 288.027 )
 scale = Vector2( 0.64, 0.64 )
 z_index = 1
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Card6"]
 position = Vector2( 128.653, 288.09 )
@@ -189,7 +150,7 @@ __meta__ = {
 position = Vector2( 128.441, 288.027 )
 scale = Vector2( 0.64, 0.64 )
 z_index = 1
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Card7"]
 position = Vector2( 128.653, 288.09 )
@@ -207,7 +168,7 @@ __meta__ = {
 position = Vector2( 128.441, 288.027 )
 scale = Vector2( 0.64, 0.64 )
 z_index = 1
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Card8"]
 position = Vector2( 128.653, 288.09 )
@@ -225,7 +186,7 @@ __meta__ = {
 position = Vector2( 128.441, 288.027 )
 scale = Vector2( 0.64, 0.64 )
 z_index = 1
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Card9"]
 position = Vector2( 128.653, 288.09 )
@@ -243,7 +204,7 @@ __meta__ = {
 position = Vector2( 128.441, 288.027 )
 scale = Vector2( 0.64, 0.64 )
 z_index = 1
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Card10"]
 position = Vector2( 128.653, 288.09 )
@@ -261,7 +222,7 @@ __meta__ = {
 position = Vector2( 128.441, 288.027 )
 scale = Vector2( 0.64, 0.64 )
 z_index = 1
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Card11"]
 position = Vector2( 128.653, 288.09 )
@@ -279,7 +240,7 @@ __meta__ = {
 position = Vector2( 128.441, 288.027 )
 scale = Vector2( 0.64, 0.64 )
 z_index = 1
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Card12"]
 position = Vector2( 128.653, 288.09 )
@@ -297,7 +258,7 @@ __meta__ = {
 position = Vector2( 128.441, 288.027 )
 scale = Vector2( 0.64, 0.64 )
 z_index = 1
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Card13"]
 position = Vector2( 128.653, 288.09 )
@@ -315,7 +276,7 @@ __meta__ = {
 position = Vector2( 128.441, 288.027 )
 scale = Vector2( 0.64, 0.64 )
 z_index = 1
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Card14"]
 position = Vector2( 128.653, 288.09 )
@@ -333,7 +294,7 @@ __meta__ = {
 position = Vector2( 128.441, 288.027 )
 scale = Vector2( 0.64, 0.64 )
 z_index = 1
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Card15"]
 position = Vector2( 128.653, 288.09 )
