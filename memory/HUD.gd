@@ -8,12 +8,13 @@ signal start_game
 func _ready():
 	$MatchesFoundLabel.hide()
 	$TimeLeftLabel.hide()
+	$ResultsContainer.hide()
 	matches_found_template = "Matches found: %s"
 	time_left_template = "Time left: %s"
 
 func _on_StartButton_pressed():
 	$StartButton.hide()
-	$Instructions.hide()
+	$InstructionContainer.hide()
 	$MatchesFoundLabel.show()
 	$TimeLeftLabel.show()
 	emit_signal("start_game")
@@ -30,4 +31,5 @@ func update_time_left(time):
 	$TimeLeftLabel.text = time_left_string
 	
 func display_result(win):
-	$ResultsLabel.text = "You won! :)" if win else "You lost :("
+	$ResultsContainer.show()
+	$ResultsContainer.get_node("Results").text = "You won! :)" if win else "You lost :("
