@@ -1,8 +1,41 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
 
-[node name="main" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://assets/background-v1.png" type="Texture" id=2]
+
+[node name="Node" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Background" type="TextureRect" parent="."]
+margin_left = -6.7348
+margin_top = -4.04086
+margin_right = 1825.27
+margin_bottom = 1216.96
+rect_scale = Vector2( 0.4, 0.4 )
+mouse_filter = 2
+texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MemoryGameButton" type="Button" parent="."]
+margin_left = 272.0
+margin_top = 96.0
+margin_right = 452.0
+margin_bottom = 186.0
+text = "Play Memory Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EggYeeterButton" type="Button" parent="."]
+margin_left = 272.0
+margin_top = 210.0
+margin_right = 452.0
+margin_bottom = 300.0
+text = "Play Egg Yeeter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="MemoryGameButton" to="." method="_on_MemoryGameButton_pressed"]
+[connection signal="pressed" from="EggYeeterButton" to="." method="_on_EggYeeterButton_pressed"]

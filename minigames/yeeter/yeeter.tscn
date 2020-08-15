@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://minigames/yeeter/entities/bird_cannon/bird_cannon.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/background-v1.png" type="Texture" id=2]
 [ext_resource path="res://minigames/yeeter/entities/power_bar/power_bar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://minigames/yeeter/entities/nest/nest.tscn" type="PackedScene" id=4]
 [ext_resource path="res://minigames/yeeter/entities/remaining/remaining.tscn" type="PackedScene" id=5]
@@ -16,14 +15,6 @@ __meta__ = {
 }
 remaining_path = NodePath("remaining")
 bird_cannon_path = NodePath("bird_cannon")
-
-[node name="sprite" type="Sprite" parent="."]
-position = Vector2( 361.185, 241.832 )
-scale = Vector2( 0.402234, 0.402234 )
-texture = ExtResource( 2 )
-
-[node name="StaticBody2D" parent="sprite" instance=ExtResource( 4 )]
-position = Vector2( 429.82, 16.7245 )
 
 [node name="bird_cannon" parent="." instance=ExtResource( 1 )]
 position = Vector2( 196.413, 379.088 )
@@ -43,3 +34,7 @@ margin_left = 70.4011
 margin_top = 21.4057
 margin_right = 110.401
 margin_bottom = 61.4057
+
+[node name="StaticBody2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 534.073, 248.559 )
+scale = Vector2( 0.402234, 0.402234 )
