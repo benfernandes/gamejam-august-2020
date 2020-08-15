@@ -6,11 +6,12 @@ extends KinematicBody2D
 # var b = "text"
 
 var speed
+var timer
 var isStopped = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var timer = Timer.new()
+	timer = Timer.new()
 	add_child(timer)
 
 	timer.connect("timeout", self, "_on_Timer_timeout")
@@ -27,8 +28,8 @@ func _physics_process(delta):
 	if !isStopped:
 		var collision = move_and_collide(Vector2(-speed, 0) * delta)
 		if collision:
-			print("Collision!")
 			get_parent().game_over()
 
 func stop():
 	isStopped = true
+	timer.stop()

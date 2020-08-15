@@ -20,7 +20,6 @@ func _physics_process(delta):
 	if !isStopped:
 		var collision = move_and_collide(Vector2(-speed, 0) * delta)
 		if collision:
-			print("Goal!")
 			get_parent().level_complete()
 
 func stop():

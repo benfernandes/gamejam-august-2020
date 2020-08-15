@@ -73,7 +73,7 @@ func stop_scene():
 	  obstacle.stop()
 	if goal_instance != null:
 		goal_instance.stop()
-	#get_node("Player").sleeping = true
+	get_node("Player/KinematicBody2D").stop()
 
 func create_timer(timeout, callback, shouldRepeat):
 	var timer = Timer.new()
