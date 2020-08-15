@@ -22,3 +22,4 @@ func _process(delta):
 		if remaining.get_value() > 0:
 			bird_cannon.shoot()
 			remaining.decrement_value()
+			value = 0
