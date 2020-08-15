@@ -6,7 +6,9 @@ var difficulty_timer
 
 var speed = 100
 var obstacles
+var current_obstacles = []
 var goal
+var goal_instance
 
 func _ready():
 	hide()
@@ -38,6 +40,7 @@ func create_obstacle():
 	var index = randi() % obstacles.size()
 	var obstacle = obstacles[index].instance()
 	add_child(obstacle)
+	current_obstacles.push_back(obstacle)
 	obstacle.set_speed(speed)
 
 func prepare_goal():
@@ -47,12 +50,30 @@ func prepare_goal():
 	create_timer(2.0, "create_goal", false)
 
 func create_goal():
-	var goal_instance = goal.instance()
+	goal_instance = goal.instance()
 	add_child(goal_instance)
 	goal_instance.set_speed(speed)
 
 func game_over():
+	stop_scene()
+	create_timer(5.0, "return_to_main_menu", false)
+
+func level_complete():
+	stop_scene()
+	create_timer(5.0, "return_to_main_menu", false)
+
+func return_to_main_menu():
 	get_parent().game_over()
+
+func stop_scene():
+	obstacle_timer.stop()
+	goal_timer.stop()
+	difficulty_timer.stop()
+	for obstacle in current_obstacles:
+	  obstacle.stop()
+	if goal_instance != null:
+		goal_instance.stop()
+	#get_node("Player").sleeping = true
 
 func create_timer(timeout, callback, shouldRepeat):
 	var timer = Timer.new()
