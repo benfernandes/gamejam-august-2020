@@ -31,8 +31,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 34.8668, 22.7513 )
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 15.0677
+height = 32.1328
 
 [node name="Player" type="Node2D"]
 
@@ -44,9 +45,10 @@ script = ExtResource( 2 )
 position = Vector2( 103.238, 146.725 )
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 5 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerRigidBody"]
-position = Vector2( 98.8737, 150.482 )
+position = Vector2( 101.702, 150.482 )
+rotation = -2.15723
 shape = SubResource( 6 )

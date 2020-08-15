@@ -5,12 +5,21 @@ var goal_timer
 var difficulty_timer
 
 var speed = 100
-var branch1
+var obstacles
 var goal
 
 func _ready():
 	hide()
-	branch1 = preload("./Obstacles/Branch1.tscn")
+	obstacles = [
+		preload("./Obstacles/Bramble.tscn"),
+		preload("./Obstacles/Branch1.tscn"),
+		preload("./Obstacles/Branch2.tscn"),
+		preload("./Obstacles/CampFire.tscn"),
+		preload("./Obstacles/Flower.tscn"),
+		preload("./Obstacles/Rock.tscn"),
+		preload("./Obstacles/Sunflower.tscn"),
+		preload("./Obstacles/Vine.tscn"),
+	]
 	goal = preload("./Goal.tscn")
 
 func start():
@@ -20,29 +29,31 @@ func start():
 	obstacle_timer = Timer.new()
 	add_child(obstacle_timer)
 	obstacle_timer.connect("timeout", self, "create_obstacle")
-	obstacle_timer.set_wait_time(3.0)
+	obstacle_timer.set_wait_time(3)
 	obstacle_timer.set_one_shot(false) # Make sure it loops
 	obstacle_timer.start()
 
 	goal_timer = Timer.new()
 	add_child(goal_timer)
 	goal_timer.connect("timeout", self, "prepare_goal")
-	goal_timer.set_wait_time(40.0)
+	goal_timer.set_wait_time(60.0)
 	goal_timer.set_one_shot(false) # Make sure it loops
 	goal_timer.start()
 
 	difficulty_timer = Timer.new()
 	add_child(difficulty_timer)
 	difficulty_timer.connect("timeout", self, "increase_difficulty")
-	difficulty_timer.set_wait_time(5.0)
+	difficulty_timer.set_wait_time(2.5)
 	difficulty_timer.set_one_shot(false) # Make sure it loops
 	difficulty_timer.start()
 
 func increase_difficulty():
-	speed = speed + 20
+	speed = speed + 10
+	obstacle_timer.set_wait_time(obstacle_timer.get_wait_time() - 0.1)
 
 func create_obstacle():
-	var obstacle = branch1.instance()
+	var index = randi() % obstacles.size()
+	var obstacle = obstacles[index].instance()
 	add_child(obstacle)
 	obstacle.set_speed(speed)
 
