@@ -24,4 +24,15 @@ text = "Play Memory Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="FlappyBirdButton" type="Button" parent="."]
+margin_left = 274.119
+margin_top = 233.0
+margin_right = 454.119
+margin_bottom = 323.0
+text = "Play Flappy Bird"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="MemoryGameButton" to="." method="_on_MemoryGameButton_pressed"]
+[connection signal="pressed" from="FlappyBirdButton" to="." method="_on_FlappyBirdButton_pressed"]
