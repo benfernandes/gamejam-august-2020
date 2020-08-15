@@ -8,5 +8,5 @@ func new_game():
 	$FlappyBird.start()
 
 func game_over():
-	get_parent()._show_main_screen()
+	get_parent().show_main_screen()
 	queue_free()

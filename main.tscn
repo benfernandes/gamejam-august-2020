@@ -19,10 +19,10 @@ __meta__ = {
 }
 
 [node name="MemoryGameButton" type="Button" parent="."]
-margin_left = 272.0
-margin_top = 96.0
-margin_right = 452.0
-margin_bottom = 186.0
+margin_left = 272.265
+margin_top = 61.8323
+margin_right = 452.265
+margin_bottom = 151.832
 text = "Play Memory Game"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -30,16 +30,16 @@ __meta__ = {
 
 [node name="EggYeeterButton" type="Button" parent="."]
 margin_left = 272.0
-margin_top = 210.0
+margin_top = 162.324
 margin_right = 452.0
-margin_bottom = 300.0
+margin_bottom = 252.324
 text = "Play Egg Yeeter"
 
 [node name="FlappyBirdButton" type="Button" parent="."]
-margin_left = 274.119
-margin_top = 233.0
-margin_right = 454.119
-margin_bottom = 323.0
+margin_left = 272.0
+margin_top = 262.135
+margin_right = 452.0
+margin_bottom = 352.135
 text = "Play Flappy Bird"
 __meta__ = {
 "_edit_use_anchors_": false
