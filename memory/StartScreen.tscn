@@ -20,6 +20,8 @@ margin_left = 120.0
 margin_top = 60.0
 margin_right = 600.0
 margin_bottom = 300.0
+text = "Instructions
+- You have X seconds to match as many pairs as you can."
 __meta__ = {
 "_edit_use_anchors_": false
 }

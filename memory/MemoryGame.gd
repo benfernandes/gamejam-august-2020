@@ -74,8 +74,8 @@ func check_if_match():
 		number_of_matches += 1
 		get_node("NumberMatchesFound").text = String(number_of_matches)
 		
-#	if number_of_matches == number_of_cards / 2:
-#		get_tree().reload_current_scene()
+	if number_of_matches == number_of_cards / 2:
+		get_parent().game_over()
 	var waiting_timer = Timer.new()
 	waiting_timer.set_wait_time(1)
 	waiting_timer.set_one_shot(true)
