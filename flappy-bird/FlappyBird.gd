@@ -26,26 +26,9 @@ func start():
 	show()
 	create_obstacle()
 
-	obstacle_timer = Timer.new()
-	add_child(obstacle_timer)
-	obstacle_timer.connect("timeout", self, "create_obstacle")
-	obstacle_timer.set_wait_time(3)
-	obstacle_timer.set_one_shot(false) # Make sure it loops
-	obstacle_timer.start()
-
-	goal_timer = Timer.new()
-	add_child(goal_timer)
-	goal_timer.connect("timeout", self, "prepare_goal")
-	goal_timer.set_wait_time(60.0)
-	goal_timer.set_one_shot(false) # Make sure it loops
-	goal_timer.start()
-
-	difficulty_timer = Timer.new()
-	add_child(difficulty_timer)
-	difficulty_timer.connect("timeout", self, "increase_difficulty")
-	difficulty_timer.set_wait_time(2.5)
-	difficulty_timer.set_one_shot(false) # Make sure it loops
-	difficulty_timer.start()
+	obstacle_timer = create_timer(3.0, "create_obstacle", true)
+	goal_timer = create_timer(60.0, "prepare_goal", true)
+	difficulty_timer = create_timer(2.5, "increase_difficulty", true)
 
 func increase_difficulty():
 	speed = speed + 10
@@ -61,12 +44,7 @@ func prepare_goal():
 	print("prepare goal")
 	obstacle_timer.stop()
 	goal_timer.stop()
-	var new_timer = Timer.new()
-	add_child(new_timer)
-	new_timer.connect("timeout", self, "create_goal")
-	new_timer.set_wait_time(3.0)
-	new_timer.set_one_shot(true) # Make sure it doesn't loop
-	new_timer.start()
+	create_timer(2.0, "create_goal", false)
 
 func create_goal():
 	var goal_instance = goal.instance()
@@ -75,3 +53,12 @@ func create_goal():
 
 func game_over():
 	get_parent().game_over()
+
+func create_timer(timeout, callback, shouldRepeat):
+	var timer = Timer.new()
+	add_child(timer)
+	timer.connect("timeout", self, callback)
+	timer.set_wait_time(timeout)
+	timer.set_one_shot(!shouldRepeat)
+	timer.start()
+	return timer
