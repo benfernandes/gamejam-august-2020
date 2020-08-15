@@ -13,7 +13,6 @@ func _ready():
 	hide()
 	
 func start():
-	number_of_matches = 0
 	selected_card1_image = "Card 1"
 	selected_card2_image = "Card 2"
 	card_default = preload("res://assets/memory/card-back.png")
@@ -51,7 +50,7 @@ func start():
 			"name": "Worm"
 		}
 	]
-	number_of_cards = images.size() * 2
+	number_of_cards = 16
 	shuffle_cards()
 	
 func shuffle_cards():
@@ -71,11 +70,8 @@ func check_if_match():
 	disable_card_clicks()
 	var matched = selected_card1_image == selected_card2_image
 	if matched:
-		number_of_matches += 1
-		get_node("NumberMatchesFound").text = String(number_of_matches)
+		get_parent().add_match()
 		
-	if number_of_matches == number_of_cards / 2:
-		get_parent().game_over()
 	var waiting_timer = Timer.new()
 	waiting_timer.set_wait_time(1)
 	waiting_timer.set_one_shot(true)
@@ -109,5 +105,8 @@ func enable_card_clicks():
 		var card = "Card" + String(i)
 		if (get_node(card).get_node("Sprite").texture == card_default):
 			get_node(card).allow_click = true
-
-
+	
+func show_all_cards():
+	for i in range(number_of_cards):
+		var card = "Card" + String(i)
+		get_node(card).show_front_image()
