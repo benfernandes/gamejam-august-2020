@@ -23,5 +23,16 @@ func _physics_process(delta):
 		if velocity > -500:
 			velocity = velocity - (400 * delta)
 
+	set_bird_angle()
+
 func stop():
 	isStopped = true
+	
+func set_bird_angle():
+	var min_velocity = -100
+	var max_velocity = 100
+	var min_angle = 70
+	var max_angle = -20
+	var clamped_velocity = clamp(velocity, min_velocity, max_velocity)
+	
+	global_rotation_degrees = (clamped_velocity - min_velocity) / (max_velocity - min_velocity) * (max_angle - min_angle) + min_angle

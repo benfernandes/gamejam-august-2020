@@ -10,6 +10,7 @@ extents = Vector2( 692.84, 7.38317 )
 script = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 69.9626, 62.5627 )
 
 [node name="Top" type="StaticBody2D" parent="."]
 

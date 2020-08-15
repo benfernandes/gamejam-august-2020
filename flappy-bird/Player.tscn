@@ -36,18 +36,20 @@ radius = 15.0677
 height = 32.1328
 
 [node name="Player" type="Node2D"]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
-position = Vector2( 103.238, 146.725 )
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 5 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( 101.702, 150.482 )
+position = Vector2( 0.449493, 3.74577 )
 rotation = -2.15723
 shape = SubResource( 6 )
