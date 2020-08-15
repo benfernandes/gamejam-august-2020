@@ -54,6 +54,7 @@ text = "<"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="eggs_stopped_moving" from="." to="." method="_on_yeeter_eggs_stopped_moving"]
 [connection signal="none_remaining" from="remaining" to="." method="_on_remaining_none_remaining"]
 [connection signal="none_remaining" from="remaining" to="power_bar" method="_on_remaining_none_remaining"]
 [connection signal="none_remaining" from="remaining" to="bird_cannon" method="_on_remaining_none_remaining"]
