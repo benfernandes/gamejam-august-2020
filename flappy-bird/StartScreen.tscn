@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://flappy-bird/StartScreen.gd" type="Script" id=1]
+
+[node name="StartScreen" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Instructions" type="RichTextLabel" parent="."]
+margin_left = 251.0
+margin_top = 251.5
+margin_right = 499.0
+margin_bottom = 278.5
+text = "Tap space to fly - avoid the obstacles!!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Button" parent="."]
+margin_left = 300.0
+margin_top = 360.0
+margin_right = 420.0
+margin_bottom = 420.0
+text = "START"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
