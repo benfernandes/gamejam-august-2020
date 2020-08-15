@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://yeeter/overlays/start_overlay/start_overlay.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.784314 )
+
+[node name="start_overlay" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="background_blur" type="Panel" parent="."]
+margin_right = 720.0
+margin_bottom = 480.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="start_button" type="Button" parent="."]
+margin_left = 185.0
+margin_top = 300.0
+margin_right = 385.0
+margin_bottom = 350.0
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="instructions" type="RichTextLabel" parent="."]
+margin_left = 185.0
+margin_top = 140.0
+margin_right = 535.0
+margin_bottom = 265.0
+text = "Aim of the game:
+Get as many of your eggs as possible into the next
+
+Use LEFT and RIGHT arrow keys to rotate the bird
+
+Hold down SPACE to build up your power
+
+Let go of SPACE to launch your egg"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
