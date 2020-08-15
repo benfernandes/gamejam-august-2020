@@ -13,14 +13,18 @@ onready var power_bar = get_node(power_bar_path)
 
 func _get_vector(magnitude, angle):
 	var x_vector = _get_x_vector(magnitude, angle)
-	var y_vector = -_get_y_vector(magnitude, angle)
+	var y_vector = _get_y_vector(magnitude, angle)
 	return Vector2(x_vector, y_vector)
 	
-func _get_x_vector(magnitude, angle_degrees):
-	return magnitude * cos((angle_degrees * PI) / 180)
+func _get_x_vector(magnitude, angle_degs):
+	return magnitude * cos(_get_rads_from_degs(angle_degs))
 	
-func _get_y_vector(magnitude, angle_degrees):
-	return magnitude * sin((angle_degrees * PI) / 180)
+func _get_y_vector(magnitude, angle_degs):
+	# We negate the Y vector because Y increases from the top down
+	return - (magnitude * sin(_get_rads_from_degs(angle_degs)))
+
+func _get_rads_from_degs(degs):
+	return (degs * PI) / 180
 
 func _process(delta):
 	if Input.is_action_pressed("ui_left"):

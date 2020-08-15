@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://minigames/yeeter/entities/remaining/remaining.gd" type="Script" id=1]
+[ext_resource path="res://minigames/yeeter/entities/remaining/remaining_bar/remaining_bar.tscn" type="PackedScene" id=2]
+
+[node name="remaining" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+remaining_bar_path = NodePath("remaining_bar")
+
+[node name="text" type="RichTextLabel" parent="."]
+margin_right = 125.0
+margin_bottom = 17.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Eggs remaining"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="remaining_bar" parent="." instance=ExtResource( 2 )]
+margin_top = 20.0
+margin_bottom = 34.0

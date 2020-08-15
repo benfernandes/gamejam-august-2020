@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://minigames/yeeter/entities/remaining/remaining_bar/remaining_bar.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0901961, 0.682353, 0.0941176, 1 )
+
+[node name="remaining_bar" type="ProgressBar"]
+margin_right = 286.0
+margin_bottom = 14.0
+custom_styles/fg = SubResource( 1 )
+step = 1.0
+value = 50.0
+percent_visible = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+remaining_label_path = NodePath("label")
+
+[node name="label" type="Label" parent="."]
+margin_left = 5.7211
+margin_top = 1.05946
+margin_right = 69.7211
+margin_bottom = 15.0595
+text = "X"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="value_changed" from="." to="." method="_on_remaining_bar_value_changed"]
