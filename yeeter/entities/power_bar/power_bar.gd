@@ -15,9 +15,9 @@ func _process(delta):
 	var new_value = value
 	
 	if Input.is_action_pressed("ui_select") && is_playing:
-		new_value += 2 * direction
+		new_value += 2.5 * direction
 	else:
-		new_value -= 2
+		new_value -= 2.5
 		direction = 1
 		
 	value = clamp(new_value, 0, 100)

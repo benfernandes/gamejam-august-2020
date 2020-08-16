@@ -1,9 +1,9 @@
 extends Control
 
-signal eggs_stopped_moving
+signal game_finished
 
-var is_playing = false
-var eggs_moving = false
+var no_eggs_remaining = false
+var is_finished = false
 
 # Remaining bar
 export (NodePath) var remaining_path
@@ -17,29 +17,24 @@ func _ready():
 	$end_overlay.hide()
 	
 func _process(delta):
-	# TODO - Get rid of this
-	if Input.is_action_just_pressed("ui_up"):
-		print("Number of eggs")
-		print(get_tree().get_nodes_in_group("eggs").size())
-		
-	eggs_moving = _are_eggs_moving()
-	print(eggs_moving)
+	if !is_finished:
+		_try_to_trigger_end_screen()
 
-func _are_eggs_moving():
+func _try_to_trigger_end_screen():
 	var eggs = get_tree().get_nodes_in_group("eggs")
 	for egg in eggs:
 		if !egg.sleeping:
-			return true
-	return false
-
-# Transition from start screen to game
-func _on_start_overlay_ready_to_start():
-	is_playing = true
-
-# Transition from game to end screen
-func _on_remaining_none_remaining():
-	is_playing = false
+			return
 	
+	if no_eggs_remaining:
+		is_finished = true
+		$end_overlay/end_message_container/end_message.text = "You scored: " + str(eggs.size())
+		emit_signal("game_finished")
+
+# Triggered when the user runs out of eggs
+func _on_remaining_none_remaining():
+	no_eggs_remaining = true
+
 # Transition from end screen to home screen
 func _on_end_overlay_ready_to_end():
 	close_game()
@@ -51,6 +46,5 @@ func close_game():
 	get_parent().show_main_screen()
 	queue_free()
 
-func _on_yeeter_eggs_stopped_moving():
-	if !is_playing:
-		$end_overlay.show()
+func _on_yeeter_game_finished():
+	$end_overlay.show()
