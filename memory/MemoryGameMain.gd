@@ -29,6 +29,7 @@ func _ready():
 			config = hard_config
 	
 	game_time = config.game_time
+	$Board.set_back_image(difficulty)
 	
 	randomize()
 	$SecondTicker.start()

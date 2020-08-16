@@ -2,6 +2,9 @@ extends Node2D
 
 var images
 var card_default
+var card_default_easy
+var card_default_medium
+var card_default_hard
 var number_of_cards
 var selected_card1
 var selected_card2
@@ -13,6 +16,9 @@ func _ready():
 	selected_card1_image = "Card 1"
 	selected_card2_image = "Card 2"
 	card_default = preload("res://assets/memory/card-back.png")
+	card_default_easy = preload("res://assets/memory/card-back.png")
+	card_default_medium = preload("res://assets/memory/card-back-medium.png")
+	card_default_hard = preload("res://assets/memory/card-back-hard.png")
 	images = [
 		{
 			"image": preload("res://assets/memory/leaf-1-card.png"),
@@ -49,6 +55,19 @@ func _ready():
 	]
 	number_of_cards = 16
 	shuffle_cards()
+
+func set_back_image(difficulty):
+	match difficulty:
+		"easy":
+			card_default = card_default_easy
+		"medium":
+			card_default = card_default_medium
+		"hard":
+			card_default = card_default_hard
+	for i in range(number_of_cards):
+		var card = "Card" + String(i)
+		get_node(card).set_back_image(card_default)
+
 	
 func shuffle_cards():
 	var card_numbers = range(number_of_cards)
