@@ -17,17 +17,21 @@ func _ready():
 	randomize()
 	$SecondTicker.start()
 	$HUD.update_time_left(game_time)
+	$Music.play()
 	
 func add_match():
 	number_of_matches += 1
+	$PointSound.play()
 	$HUD.update_matches(number_of_matches)
 	if number_of_matches == max_matches:
 		$SecondTicker.stop()
 		$Board.show_all_cards()
+		$WinSound.play()
 		game_over()
 
 func game_over():
 	$HUD.display_result(number_of_matches == max_matches)
+	$Music.stop()
 	
 	var end_timer = Timer.new()
 	end_timer.set_wait_time(4)
@@ -44,6 +48,7 @@ func _on_SecondTicker_timeout():
 	if game_time == 0:
 		$Board.disable_card_clicks()
 		$SecondTicker.stop()
+		$LoseSound.play()
 		game_over()
 	
 func _on_Button_pressed():
