@@ -5,8 +5,8 @@ var egg_yeeter_game
 var hatch_scene
 var flappy_bird
 var scene_instance
-var current_difficulty = "hard"
-var current_act = 3
+var current_difficulty = "easy"
+var current_act = 1
 var current_game_name
 
 var flappy_text = "It's time to fly the nest and find somewhere to settle down.\n\nTap space to fly and avoid the obstacles!"
