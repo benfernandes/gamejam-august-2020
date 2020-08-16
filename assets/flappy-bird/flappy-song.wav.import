@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/flappy-song.wav-232bd008972f84c07c2e12ad8ac1c695.sample"
+
+[deps]
+
+source_file="res://assets/flappy-bird/flappy-song.wav"
+dest_files=[ "res://.import/flappy-song.wav-232bd008972f84c07c2e12ad8ac1c695.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
