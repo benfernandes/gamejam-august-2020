@@ -21,38 +21,34 @@ func _ready():
 
 func hide_main_screen():
 	$MainTextBox.hide()
-	$MemoryGameButton.hide()
-	$EggYeeterButton.hide()
-	$FlappyBirdButton.hide()
+	$StartGameButton.hide()
 
 func _on_main_start_game():
 	start_flappy_scene()
 
 # Temp
-func start_scene(text_node, button_node, scene, scene_name):
-	text_node.show()
-	button_node.show()
+func start_scene(start_screen_text, scene, scene_name):
+	$MainTextBox.show()
+	$StartGameButton.show()
+	$MainTextBox/MainText.text = start_screen_text
 	scene_instance = scene.instance()
 	scene_instance.difficulty = current_difficulty
 	scene_instance.connect("scene_finished", self, "_on_scene_finished", [scene_name])
 
 # Running Flappy Bird scene
 func start_flappy_scene():
-	$MainTextBox/MainText.text = flappy_text
-	start_scene($MainTextBox, $FlappyBirdButton, flappy_bird, "flappy")
+	start_scene(flappy_text, flappy_bird, "flappy")
 
 # Running Memory scene
 func start_memory_scene():
-	$MainTextBox/MainText.text = memory_text
-	start_scene($MainTextBox, $MemoryGameButton, memory_game, "memory")
+	start_scene(memory_text, memory_game, "memory")
 
 # Running Yeeter scene
 func start_yeeter_scene():
-	$MainTextBox/MainText.text = yeeter_text
-	start_scene($MainTextBox, $EggYeeterButton, egg_yeeter_game, "yeeter")
+	start_scene(yeeter_text, egg_yeeter_game, "yeeter")
 
 # Handling start scene button pressed
-func _on_start_scene_button_pressed():
+func _on_start_game_button_pressed():
 	hide_main_screen()
 	add_child(scene_instance)
 

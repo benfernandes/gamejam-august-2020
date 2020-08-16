@@ -20,36 +20,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MemoryGameButton" type="Button" parent="."]
+[node name="StartGameButton" type="Button" parent="."]
 margin_left = 272.0
 margin_top = 320.0
 margin_right = 452.0
 margin_bottom = 410.0
-text = "Play"
+text = "PLAY"
 __meta__ = {
 "_edit_use_anchors_": false
-}
-
-[node name="EggYeeterButton" type="Button" parent="."]
-margin_left = 272.0
-margin_top = 320.0
-margin_right = 452.0
-margin_bottom = 410.0
-text = "Play"
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="FlappyBirdButton" type="Button" parent="."]
-margin_left = 272.0
-margin_top = 320.0
-margin_right = 452.0
-margin_bottom = 410.0
-text = "Play"
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
 }
 
 [node name="MainStartScreen" parent="." instance=ExtResource( 3 )]
@@ -82,7 +60,5 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
-[connection signal="pressed" from="MemoryGameButton" to="." method="_on_start_scene_button_pressed"]
-[connection signal="pressed" from="EggYeeterButton" to="." method="_on_start_scene_button_pressed"]
-[connection signal="pressed" from="FlappyBirdButton" to="." method="_on_start_scene_button_pressed"]
+[connection signal="pressed" from="StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="begin" from="MainStartScreen" to="." method="_on_main_start_game"]
