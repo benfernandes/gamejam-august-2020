@@ -1,6 +1,6 @@
 extends Node
 
-signal scene_finished(game_name, has_won)
+signal scene_finished(has_won)
 
 var difficulty
 
@@ -11,4 +11,4 @@ func _ready():
 	$Music.play()
 
 func game_over(has_won):
-	emit_signal("scene_finished", "flappy", has_won)
+	emit_signal("scene_finished", has_won)

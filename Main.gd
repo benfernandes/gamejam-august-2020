@@ -27,24 +27,24 @@ func _on_main_start_game():
 	start_flappy_scene()
 
 # Temp
-func start_scene(text_node, button_node, scene):
+func start_scene(text_node, button_node, scene, scene_name):
 	text_node.show()
 	button_node.show()
 	scene_instance = scene.instance()
 	scene_instance.difficulty = current_difficulty
-	scene_instance.connect("scene_finished", self, "_on_scene_finished")
+	scene_instance.connect("scene_finished", self, "_on_scene_finished", [scene_name])
 
 # Running Flappy Bird scene
 func start_flappy_scene():
-	start_scene($FlappyBirdTextBox, $FlappyBirdButton, flappy_bird)
+	start_scene($FlappyBirdTextBox, $FlappyBirdButton, flappy_bird, "flappy")
 
 # Running Memory scene
 func start_memory_scene():
-	start_scene($MemoryGameTextBox, $MemoryGameButton, memory_game)
+	start_scene($MemoryGameTextBox, $MemoryGameButton, memory_game, "memory")
 
 # Running Yeeter scene
 func start_yeeter_scene():
-	start_scene($EggYeeterTextBox, $EggYeeterButton, egg_yeeter_game)
+	start_scene($EggYeeterTextBox, $EggYeeterButton, egg_yeeter_game, "yeeter")
 
 # Handling start scene button pressed
 func _on_start_scene_button_pressed():
@@ -56,12 +56,12 @@ func start_hatch_scene():
 	hide_main_screen()
 	scene_instance = hatch_scene.instance()
 	scene_instance.difficulty = current_difficulty
-	scene_instance.connect("scene_finished", self, "_on_scene_finished")
+	scene_instance.connect("scene_finished", self, "_on_scene_finished", ["hatch"])
 	add_child(scene_instance)
 	scene_instance.start()
 
 # Handler for when minigames finish
-func _on_scene_finished(game_name, has_won):
+func _on_scene_finished(has_won, game_name):
 	print(game_name + " game finished with this result: " + str(has_won))
 	scene_instance.queue_free()
 	

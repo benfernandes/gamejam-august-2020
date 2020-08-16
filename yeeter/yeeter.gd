@@ -1,6 +1,6 @@
 extends Control
 
-signal scene_finished(game_name, has_won)
+signal scene_finished(has_won)
 
 var no_eggs_remaining = false
 var is_finished = false
@@ -53,7 +53,7 @@ func _try_to_trigger_end_screen():
 	
 	if no_eggs_remaining:
 		var won = eggs.size() >= target_eggs
-		emit_signal("scene_finished", "yeeter", won)
+		emit_signal("scene_finished", won)
 
 # Triggered when the user runs out of eggs
 func _on_remaining_none_remaining():
