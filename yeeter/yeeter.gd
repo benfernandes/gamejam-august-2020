@@ -39,6 +39,7 @@ func _ready():
 	bird_cannon.set_difficulty(difficulty)
 	
 	target_eggs = config.target_eggs
+	$Music.play()
 
 	
 func _process(delta):
@@ -52,7 +53,12 @@ func _try_to_trigger_end_screen():
 			return
 	
 	if no_eggs_remaining:
+		$Music.stop()
 		var won = eggs.size() >= target_eggs
+		if won:
+			$WinSound.play()
+		else:
+			$LoseSound.play()
 		emit_signal("scene_finished", "yeeter", won)
 
 # Triggered when the user runs out of eggs

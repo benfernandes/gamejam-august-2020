@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://yeeter/yeeter.gd" type="Script" id=1]
 [ext_resource path="res://yeeter/entities/nest/nest.tscn" type="PackedScene" id=2]
 [ext_resource path="res://yeeter/entities/power_bar/power_bar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://yeeter/entities/remaining/remaining.tscn" type="PackedScene" id=4]
 [ext_resource path="res://yeeter/entities/bird_cannon/bird_cannon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/success.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/failure.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/yeeter-song.wav" type="AudioStream" id=8]
 
 [node name="yeeter" type="Control"]
 anchor_right = 1.0
@@ -39,6 +42,15 @@ margin_bottom = 61.4057
 [node name="nest" parent="." instance=ExtResource( 2 )]
 position = Vector2( 534.073, 248.559 )
 scale = Vector2( 0.402234, 0.402234 )
-[connection signal="none_remaining" from="remaining" to="bird_cannon" method="_on_remaining_none_remaining"]
-[connection signal="none_remaining" from="remaining" to="." method="_on_remaining_none_remaining"]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="LoseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
 [connection signal="none_remaining" from="remaining" to="power_bar" method="_on_remaining_none_remaining"]
+[connection signal="none_remaining" from="remaining" to="." method="_on_remaining_none_remaining"]
+[connection signal="none_remaining" from="remaining" to="bird_cannon" method="_on_remaining_none_remaining"]
