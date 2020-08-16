@@ -10,8 +10,10 @@ func _ready():
 func flap():
 	hasStarted = true
 
-	if velocity < 500:
-		velocity = velocity + 150
+	if velocity < 400:
+		velocity = velocity + 200
+		if velocity > 400:
+			velocity = 400
 
 func _input(event):
 	if event.is_action_pressed("flap"):
@@ -20,7 +22,7 @@ func _input(event):
 func _physics_process(delta):
 	if !isStopped && hasStarted:
 		var collision = move_and_collide(Vector2(0, -velocity) * delta)
-		if velocity > -500:
+		if velocity > -400:
 			velocity = velocity - (400 * delta)
 		set_bird_angle()
 

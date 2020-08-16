@@ -12,13 +12,8 @@ var current_act = 1
 func _ready():
 	hide_main_screen()
 	memory_game = preload("res://memory/MemoryGameMain.tscn")
-	memory_game_instance = memory_game.instance()
-
 	flappy_bird = preload("res://flappy-bird/FlappyBirdMain.tscn")
-	flappy_bird_instance = flappy_bird.instance()
-
 	egg_yeeter_game = preload("res://yeeter/yeeter.tscn")
-	egg_yeeter_game_instance = egg_yeeter_game.instance()
 
 func hide_main_screen():
 	$MemoryGameTextBox.hide()
@@ -53,6 +48,7 @@ func show_main_screen():
 	$FlappyBirdTextBox.show()
 	$FlappyBirdButton.show()
 	flappy_bird_instance = flappy_bird.instance()
+	flappy_bird_instance.difficulty = current_difficulty	
 
 func _on_MemoryGameButton_pressed():
 	hide_main_screen()
