@@ -41,52 +41,24 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=19]
-flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 755, 604 )
-
-[sub_resource type="AtlasTexture" id=20]
-flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 755, 0, 755, 604 )
-
-[sub_resource type="AtlasTexture" id=21]
-flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 1510, 0, 755, 604 )
-
-[sub_resource type="AtlasTexture" id=22]
-flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 2265, 0, 755, 604 )
-
-[sub_resource type="SpriteFrames" id=23]
-animations = [ {
-"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
-atlas = ExtResource( 6 )
+atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 755, 604 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
-atlas = ExtResource( 6 )
+atlas = ExtResource( 7 )
 region = Rect2( 755, 0, 755, 604 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
-atlas = ExtResource( 6 )
+atlas = ExtResource( 7 )
 region = Rect2( 1510, 0, 755, 604 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
-atlas = ExtResource( 6 )
+atlas = ExtResource( 7 )
 region = Rect2( 2265, 0, 755, 604 )
 
 [sub_resource type="SpriteFrames" id=11]
@@ -99,37 +71,65 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 226, 302 )
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 755, 604 )
 
 [sub_resource type="AtlasTexture" id=13]
 flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 226, 0, 226, 302 )
+atlas = ExtResource( 6 )
+region = Rect2( 755, 0, 755, 604 )
 
 [sub_resource type="AtlasTexture" id=14]
 flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 452, 0, 226, 302 )
+atlas = ExtResource( 6 )
+region = Rect2( 1510, 0, 755, 604 )
 
 [sub_resource type="AtlasTexture" id=15]
 flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 678, 0, 226, 302 )
+atlas = ExtResource( 6 )
+region = Rect2( 2265, 0, 755, 604 )
 
-[sub_resource type="AtlasTexture" id=16]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 904, 0, 226, 302 )
+[sub_resource type="SpriteFrames" id=16]
+animations = [ {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="AtlasTexture" id=17]
 flags = 4
 atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 226, 302 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 226, 0, 226, 302 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 452, 0, 226, 302 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 678, 0, 226, 302 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 904, 0, 226, 302 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 1 )
 region = Rect2( 1130, 0, 226, 302 )
 
-[sub_resource type="SpriteFrames" id=18]
+[sub_resource type="SpriteFrames" id=23]
 animations = [ {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": false,
 "name": "default",
 "speed": 1.0
@@ -175,28 +175,28 @@ position = Vector2( 1.18359, 6.79419 )
 rotation = 1.47863
 scale = Vector2( 0.15, 0.15 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 
 [node name="MediumBird" type="AnimatedSprite" parent="Path2D/Follow"]
 position = Vector2( 1.18359, 6.79419 )
 rotation = 1.47863
 scale = Vector2( 0.15, 0.15 )
-frames = SubResource( 23 )
-frame = 3
+frames = SubResource( 11 )
+frame = 2
 playing = true
 
 [node name="HardBird" type="AnimatedSprite" parent="Path2D/Follow"]
 position = Vector2( 1.18359, 6.79419 )
 rotation = 1.47863
 scale = Vector2( 0.15, 0.15 )
-frames = SubResource( 11 )
+frames = SubResource( 16 )
+frame = 2
 playing = true
 
 [node name="Egg" type="AnimatedSprite" parent="."]
 position = Vector2( 317.985, 295.034 )
 scale = Vector2( 0.523204, 0.5 )
-frames = SubResource( 18 )
+frames = SubResource( 23 )
 
 [node name="ContinueButton" type="Button" parent="."]
 margin_left = 294.416

@@ -1,4 +1,7 @@
 extends Node
+
+signal scene_finished(game_name, has_won)
+
 var difficulty
 
 func _ready():
@@ -7,6 +10,5 @@ func _ready():
 	$FlappyBird.start(difficulty)
 	$Music.play()
 
-func game_over():
-	get_parent().handle_game_won("flappy")
-	queue_free()
+func game_over(has_won):
+	emit_signal("scene_finished", "flappy", has_won)
