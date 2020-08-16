@@ -26,26 +26,6 @@ func hide_main_screen():
 	$FlappyBirdTextBox.hide()
 	$FlappyBirdButton.hide()
 	$EggHatchTextBox.hide()
-	
-func handle_game_won(game):
-	if game == "hatch":
-		$FlappyBirdTextBox.show()
-		$FlappyBirdButton.show()
-		flappy_bird_instance = flappy_bird.instance()
-		flappy_bird_instance.difficulty = current_difficulty
-	elif game == "flappy":
-		$MemoryGameTextBox.show()
-		$MemoryGameButton.show()
-		memory_game_instance = memory_game.instance()
-		memory_game_instance.difficulty = current_difficulty
-	elif game == "memory":
-		$EggYeeterTextBox.show()
-		$EggYeeterButton.show()
-		egg_yeeter_game_instance = egg_yeeter_game.instance()
-		egg_yeeter_game_instance.difficulty = current_difficulty
-	elif game == "yeeter":
-		proceed_to_next_act()
-# TODO - Move ^ this line to the _on_game_finished func
 
 func _on_main_start_game():
 	start_flappy_bird()
@@ -100,12 +80,9 @@ func _on_game_finished(game_name, has_won):
 			start_yeeter_game()
 		"yeeter":
 			egg_yeeter_game_instance.queue_free()
-			start_hatching_cutscene()
-
-# Running Hatching Cutscene
-func start_hatching_cutscene():
-	$EggHatchTextBox.show()
-	proceed_to_next_act()
+			proceed_to_next_act()
+		"hatch":
+			start_flappy_bird()
 	
 func proceed_to_next_act():
 	if current_act == 1:
@@ -124,16 +101,6 @@ func proceed_to_next_act():
 		print("finished")
 		# TODO: handle game finish
 
-# TODO - Pick one of these (probably the second)
-func start_new_act_with_delay():
-	var next_act_timer = Timer.new()
-	next_act_timer.set_wait_time(3)
-	next_act_timer.set_one_shot(true)
-	self.add_child(next_act_timer)
-	next_act_timer.start()
-	
-	yield(next_act_timer, "timeout")
-	start_flappy_bird()
 func start_new_act():
 	hide_main_screen()
 	hatch_scene_instance = hatch_scene.instance()

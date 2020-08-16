@@ -1,12 +1,12 @@
 extends Node2D
 
+signal game_finished(game_name, has_won)
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 var difficulty = "easy"
 var follow = false
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,9 +18,7 @@ func start():
 	$Egg.play("default")
 
 func _on_ContinueButton_pressed():
-	get_parent().handle_game_won("hatch")
-	queue_free()
-
+	emit_signal("game_finished", "hatch", true)
 
 func _on_Egg_animation_finished():
 	if difficulty == "easy":
