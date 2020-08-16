@@ -10,13 +10,13 @@ var target_eggs
 # Configurations
 var config
 var easy_config = {
-	"target_eggs": 5
+	"target_eggs": 3
 }
 var medium_config = {
-	"target_eggs": 7
+	"target_eggs": 5
 }
 var hard_config = {
-	"target_eggs": 10
+	"target_eggs": 1
 }
 
 # Remaining bar
