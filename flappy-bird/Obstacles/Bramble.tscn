@@ -10,11 +10,11 @@ extents = Vector2( 32.4788, 145.141 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 833.537, 329.421 )
+position = Vector2( 784.345, 329.421 )
 scale = Vector2( 0.508433, 0.516315 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 845.941, 322.905 )
+position = Vector2( 796.749, 322.905 )
 rotation = 0.190241
 shape = SubResource( 1 )

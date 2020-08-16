@@ -22,8 +22,8 @@ func _physics_process(delta):
 		var collision = move_and_collide(Vector2(0, -velocity) * delta)
 		if velocity > -500:
 			velocity = velocity - (400 * delta)
+		set_bird_angle()
 
-	set_bird_angle()
 
 func stop():
 	isStopped = true
@@ -31,7 +31,7 @@ func stop():
 func set_bird_angle():
 	var min_velocity = -100
 	var max_velocity = 100
-	var min_angle = 70
+	var min_angle = 30
 	var max_angle = -20
 	var clamped_velocity = clamp(velocity, min_velocity, max_velocity)
 	
