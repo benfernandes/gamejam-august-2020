@@ -11,6 +11,7 @@ var current_act = 1
 func _ready():
 	hide_main_screen()
 	$Signposts.hide()
+	$BackgroundMusic.play()
 	flappy_bird = preload("res://flappy-bird/FlappyBirdMain.tscn")
 	memory_game = preload("res://memory/MemoryGameMain.tscn")
 	egg_yeeter_game = preload("res://yeeter/yeeter.tscn")
@@ -26,6 +27,7 @@ func hide_main_screen():
 
 func _on_main_start_game():
 	$Signposts.show()
+	$BackgroundMusic.stop()
 	start_flappy_scene()
 
 # Temp
@@ -60,6 +62,7 @@ func _on_start_scene_button_pressed():
 # Running Hatching scene
 func start_hatch_scene():
 	hide_main_screen()
+	$EggHatchMusic.play()
 	scene_instance = hatch_scene.instance()
 	scene_instance.difficulty = current_difficulty
 	scene_instance.connect("scene_finished", self, "_on_scene_finished")
