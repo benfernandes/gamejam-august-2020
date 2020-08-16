@@ -1,5 +1,4 @@
 extends Control
-
 # Remaining bar
 export (NodePath) var remaining_path
 onready var remaining = get_node(remaining_path)
@@ -7,6 +6,8 @@ onready var remaining = get_node(remaining_path)
 # Bird cannon
 export (NodePath) var bird_cannon_path
 onready var bird_cannon = get_node(bird_cannon_path)
+
+var difficulty = "easy"
 
 func _ready():
 	pass
@@ -17,5 +18,5 @@ func _process(delta):
 		print(get_tree().get_nodes_in_group("eggs").size())
 
 func _on_remaining_none_remaining():
-	get_parent().show_main_screen()
+	get_parent().handle_game_won("yeeter")
 	queue_free()

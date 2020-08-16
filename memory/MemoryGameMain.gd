@@ -1,19 +1,21 @@
 extends Node
 
-var number_of_matches
-var max_matches
+var number_of_matches = 0
+var max_matches = 7
 var game_time
+var difficulty = "easy"
 
 func _ready():
-	number_of_matches = 0
-	max_matches = 7
-	game_time = 30
+	match difficulty:
+		"easy":
+			game_time = 45
+		"medium":
+			game_time = 30
+		"hard": 
+			game_time = 25
 	randomize()
-
-func new_game():
-	$Board.show()
-	$Board.start()
 	$SecondTicker.start()
+	$HUD.update_time_left(game_time)
 	
 func add_match():
 	number_of_matches += 1
@@ -33,7 +35,7 @@ func game_over():
 	end_timer.start()
 	
 	yield(end_timer, "timeout")
-	get_parent().show_main_screen()
+	get_parent().handle_game_won("memory")
 	queue_free()
 
 func _on_SecondTicker_timeout():

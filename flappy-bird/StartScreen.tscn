@@ -1,9 +1,19 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://flappy-bird/StartScreen.gd" type="Script" id=1]
+[sub_resource type="GDScript" id=1]
+script/source = "extends CanvasLayer
+
+signal start_game
+
+func _on_StartButton_pressed():
+	$StartButton.hide()
+	$Instructions.hide()
+	emit_signal(\"start_game\")
+
+"
 
 [node name="StartScreen" type="CanvasLayer"]
-script = ExtResource( 1 )
+script = SubResource( 1 )
 
 [node name="Instructions" type="RichTextLabel" parent="."]
 margin_left = 251.0

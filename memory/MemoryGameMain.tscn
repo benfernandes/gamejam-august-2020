@@ -14,5 +14,4 @@ z_index = 1
 layer = 0
 
 [node name="SecondTicker" type="Timer" parent="."]
-[connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="SecondTicker" to="." method="_on_SecondTicker_timeout"]
