@@ -14,6 +14,7 @@ var yeeter_text = "What a lovely nest! Well done. Now time to lay some eggs!\n\n
 
 func _ready():
 	hide_main_screen()
+	$Signposts.hide()
 	flappy_bird = preload("res://flappy-bird/FlappyBirdMain.tscn")
 	memory_game = preload("res://memory/MemoryGameMain.tscn")
 	egg_yeeter_game = preload("res://yeeter/yeeter.tscn")
@@ -24,6 +25,7 @@ func hide_main_screen():
 	$StartGameButton.hide()
 
 func _on_main_start_game():
+	$Signposts.show()
 	start_flappy_scene()
 
 # Temp
@@ -37,14 +39,18 @@ func start_scene(start_screen_text, scene, scene_name):
 
 # Running Flappy Bird scene
 func start_flappy_scene():
+	$Signposts/Scene.text = "SCENE 1"
+	$Signposts/Act.text = "ACT " + str(current_act)
 	start_scene(flappy_text, flappy_bird, "flappy")
 
 # Running Memory scene
 func start_memory_scene():
+	$Signposts/Scene.text = "SCENE 2"
 	start_scene(memory_text, memory_game, "memory")
 
-# Running Yeeter scene
+	# Running Yeeter scene
 func start_yeeter_scene():
+	$Signposts/Scene.text = "SCENE 3"
 	start_scene(yeeter_text, egg_yeeter_game, "yeeter")
 
 # Handling start scene button pressed

@@ -1,18 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/background-v1.png" type="Texture" id=2]
 [ext_resource path="res://MainStartScreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/text_container_2.png" type="Texture" id=4]
+[ext_resource path="res://assets/sign-right.svg" type="Texture" id=5]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
 
 [node name="Background" type="TextureRect" parent="."]
-margin_left = -6.7348
-margin_top = -4.04086
-margin_right = 1825.27
-margin_bottom = 1216.96
+margin_left = -6.92212
+margin_top = -3.66629
+margin_right = 1825.08
+margin_bottom = 1217.33
 rect_scale = Vector2( 0.4, 0.4 )
 mouse_filter = 2
 texture = ExtResource( 2 )
@@ -59,6 +60,102 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
+}
+
+[node name="EggYeeterTextBox" type="TextureRect" parent="."]
+margin_left = 184.0
+margin_top = 80.0
+margin_right = 357.0
+margin_bottom = 182.0
+rect_scale = Vector2( 2, 2 )
+mouse_filter = 2
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="EggYeeterText" type="Label" parent="EggYeeterTextBox"]
+margin_left = 16.0
+margin_right = 296.0
+margin_bottom = 202.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "What a lovely nest! Well done. Now time to lay some eggs! 
+
+Hold space to lay an egg and use the left and right buttons to aim. Release the spacebar to  shoot the egg out.
+
+Get as many eggs as you can into the backet!"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="FlappyBirdTextBox" type="TextureRect" parent="."]
+margin_left = 184.0
+margin_top = 80.0
+margin_right = 357.0
+margin_bottom = 182.0
+rect_scale = Vector2( 2, 2 )
+mouse_filter = 2
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="FlappyBirdText" type="Label" parent="FlappyBirdTextBox"]
+margin_left = 16.0
+margin_right = 296.0
+margin_bottom = 202.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "It's time to fly the nest and find somewhere to settle down. 
+
+Tap space to fly and avoid the obstacles!"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Signposts" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Signposts"]
+position = Vector2( 609.502, 327.945 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+
+[node name="Act" type="Label" parent="Signposts"]
+margin_left = 590.585
+margin_top = 309.801
+margin_right = 630.585
+margin_bottom = 329.801
+text = "ACT 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite2" type="Sprite" parent="Signposts"]
+position = Vector2( 674.493, 351.412 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 5 )
+
+[node name="Scene" type="Label" parent="Signposts"]
+margin_left = 648.659
+margin_top = 328.147
+margin_right = 699.659
+margin_bottom = 348.147
+text = "SCENE 1"
+__meta__ = {
+"_edit_use_anchors_": false
 }
 [connection signal="pressed" from="StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="begin" from="MainStartScreen" to="." method="_on_main_start_game"]

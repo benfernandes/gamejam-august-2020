@@ -21,7 +21,7 @@ layer = 0
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -25.242
+volume_db = -14.135
 
 [node name="WinSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
