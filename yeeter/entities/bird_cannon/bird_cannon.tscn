@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://yeeter/entities/bird_cannon/assets/basic-bird-sitting.svg" type="Texture" id=1]
 [ext_resource path="res://yeeter/entities/bird_cannon/egg/egg.tscn" type="PackedScene" id=2]
 [ext_resource path="res://yeeter/entities/bird_cannon/bird_cannon.gd" type="Script" id=3]
+[ext_resource path="res://yeeter/entities/bird_cannon/assets/toucan-sitting.svg" type="Texture" id=4]
+[ext_resource path="res://yeeter/entities/bird_cannon/assets/hawk-sitting.svg" type="Texture" id=5]
 
 [node name="bird_cannon" type="KinematicBody2D"]
 rotation = -0.663225
@@ -20,12 +22,12 @@ flip_h = true
 
 [node name="MediumSprite" type="Sprite" parent="."]
 scale = Vector2( 0.107807, 0.107807 )
-texture = ExtResource( 1 )
+texture = ExtResource( 5 )
 flip_h = true
 
 [node name="HardSprite" type="Sprite" parent="."]
 scale = Vector2( 0.107807, 0.107807 )
-texture = ExtResource( 1 )
+texture = ExtResource( 4 )
 flip_h = true
 
 [node name="egg_spawn" type="Position2D" parent="."]
