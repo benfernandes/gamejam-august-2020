@@ -1,19 +1,35 @@
 extends Node
 
+signal game_finished(game_name, has_won)
+
 var number_of_matches = 0
 var max_matches = 7
 var game_time
 var difficulty
 
+var config
+var easy_config = {
+	"game_time": 45
+}
+var medium_config = {
+	"game_time": 30
+}
+var hard_config = {
+	"game_time": 25
+}
+
 func _ready():
-	print("Memory difficulty" + difficulty)
+	print("Memory difficulty: " + difficulty)
 	match difficulty:
 		"easy":
-			game_time = 45
+			config = easy_config
 		"medium":
-			game_time = 30
+			config = medium_config
 		"hard": 
-			game_time = 25
+			config = hard_config
+	
+	game_time = config.game_time
+	
 	randomize()
 	$SecondTicker.start()
 	$HUD.update_time_left(game_time)
@@ -27,7 +43,8 @@ func add_match():
 		game_over()
 
 func game_over():
-	$HUD.display_result(number_of_matches == max_matches)
+	var has_won = number_of_matches == max_matches
+	$HUD.display_result(has_won)
 	
 	var end_timer = Timer.new()
 	end_timer.set_wait_time(4)
@@ -36,7 +53,7 @@ func game_over():
 	end_timer.start()
 	
 	yield(end_timer, "timeout")
-	close_game()
+	emit_signal("game_finished", "memory", has_won)
 
 func _on_SecondTicker_timeout():
 	game_time -= 1
@@ -46,9 +63,3 @@ func _on_SecondTicker_timeout():
 		$SecondTicker.stop()
 		game_over()
 	
-func _on_Button_pressed():
-	close_game()
-	
-func close_game():
-	get_parent().handle_game_won("memory")
-	queue_free()

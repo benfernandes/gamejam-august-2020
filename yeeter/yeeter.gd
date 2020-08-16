@@ -1,6 +1,6 @@
 extends Control
 
-signal game_finished
+signal game_finished(game_name, has_won)
 
 var no_eggs_remaining = false
 var is_finished = false
@@ -52,9 +52,9 @@ func _try_to_trigger_end_screen():
 			return
 	
 	if no_eggs_remaining:
-		is_finished = true
-		$end_overlay/end_message_container/end_message.text = "You scored: " + str(eggs.size()) + "/" + str(target_eggs)
-		emit_signal("game_finished")
+		emit_signal("game_finished", "yeeter", true)
+		#is_finished = true
+		#$end_overlay/end_message_container/end_message.text = "You scored: " + str(eggs.size()) + "/" + str(target_eggs)
 
 # Triggered when the user runs out of eggs
 func _on_remaining_none_remaining():
@@ -62,14 +62,9 @@ func _on_remaining_none_remaining():
 
 # Transition from end screen to home screen
 func _on_end_overlay_ready_to_end():
-	close_game()
-
-func _on_back_button_pressed():
-	close_game()
-
-func close_game():
-	get_parent().handle_game_won("yeeter")
-	queue_free()
+	var eggs = get_tree().get_nodes_in_group("eggs")
+	var game_won = eggs.size() >= target_eggs
+	emit_signal("game_finished", "yeeter", game_won)
 
 func _on_yeeter_game_finished():
 	$end_overlay.show()

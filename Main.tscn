@@ -193,4 +193,4 @@ __meta__ = {
 [connection signal="pressed" from="MemoryGameButton" to="." method="_on_MemoryGameButton_pressed"]
 [connection signal="pressed" from="EggYeeterButton" to="." method="_on_EggYeeterButton_pressed"]
 [connection signal="pressed" from="FlappyBirdButton" to="." method="_on_FlappyBirdButton_pressed"]
-[connection signal="begin" from="MainStartScreen" to="." method="show_main_screen"]
+[connection signal="begin" from="MainStartScreen" to="." method="_on_main_start_game"]

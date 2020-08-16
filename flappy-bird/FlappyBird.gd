@@ -65,9 +65,9 @@ func start(difficulty):
 	add_child(player)
 
 	speed = config.start_speed
-	obstacle_timer = create_timer(config.obstacle_start_time, "create_obstacle", true)
-	goal_timer = create_timer(config.game_time, "prepare_goal", true)
-	difficulty_timer = create_timer(2.5, "increase_difficulty", true)
+	obstacle_timer = create_timer(config.obstacle_start_time, "create_obstacle", true, [])
+	goal_timer = create_timer(config.game_time, "prepare_goal", true, [])
+	difficulty_timer = create_timer(2.5, "increase_difficulty", true, [])
 
 	show()
 	create_obstacle()
@@ -88,7 +88,7 @@ func create_obstacle():
 func prepare_goal():
 	obstacle_timer.stop()
 	goal_timer.stop()
-	prepare_goal_timer = create_timer(2.0, "create_goal", false)
+	prepare_goal_timer = create_timer(2.0, "create_goal", false, [])
 
 func create_goal():
 	goal_instance = goal.instance()
@@ -97,14 +97,14 @@ func create_goal():
 
 func game_over():
 	stop_scene()
-	create_timer(5.0, "return_to_main_menu", false)
+	create_timer(5.0, "return_to_main_menu", false, [false])
 
 func level_complete():
 	stop_scene()
-	create_timer(5.0, "return_to_main_menu", false)
+	create_timer(5.0, "return_to_main_menu", false, [true])
 
-func return_to_main_menu():
-	get_parent().game_over()
+func return_to_main_menu(has_won):
+	get_parent().game_over(has_won)
 
 func stop_scene():
 	obstacle_timer.stop()
@@ -119,10 +119,10 @@ func stop_scene():
 	for obstacle in current_obstacles:
 	  obstacle.stop()
 
-func create_timer(timeout, callback, shouldRepeat):
+func create_timer(timeout, callback, shouldRepeat, params):
 	var timer = Timer.new()
 	add_child(timer)
-	timer.connect("timeout", self, callback)
+	timer.connect("timeout", self, callback, params)
 	timer.set_wait_time(timeout)
 	timer.set_one_shot(!shouldRepeat)
 	timer.start()

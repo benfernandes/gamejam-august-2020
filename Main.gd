@@ -23,44 +23,66 @@ func hide_main_screen():
 	$FlappyBirdTextBox.hide()
 	$FlappyBirdButton.hide()
 	$EggHatchTextBox.hide()
-	
-func handle_game_won(game):
-	if game == "hatch":
-		$FlappyBirdTextBox.show()
-		$FlappyBirdButton.show()
-		flappy_bird_instance = flappy_bird.instance()
-		flappy_bird_instance.difficulty = current_difficulty
-	elif game == "flappy":
-		$MemoryGameTextBox.show()
-		$MemoryGameButton.show()
-		memory_game_instance = memory_game.instance()
-		memory_game_instance.difficulty = current_difficulty
-	elif game == "memory":
-		$EggYeeterTextBox.show()
-		$EggYeeterButton.show()
-		egg_yeeter_game_instance = egg_yeeter_game.instance()
-		egg_yeeter_game_instance.difficulty = current_difficulty
-	elif game == "yeeter":
-		$EggHatchTextBox.show()
-		proceed_to_next_act()
 
-func show_main_screen():
+func _on_main_start_game():
+	start_flappy_bird()
+
+# Running Flappy Bird Game
+func start_flappy_bird():
 	$FlappyBirdTextBox.show()
 	$FlappyBirdButton.show()
 	flappy_bird_instance = flappy_bird.instance()
 	flappy_bird_instance.difficulty = current_difficulty
+	flappy_bird_instance.connect("game_finished", self, "_on_game_finished")
+
+func _on_FlappyBirdButton_pressed():
+	hide_main_screen()
+	add_child(flappy_bird_instance)
+
+# Running Memory Game
+func start_memory_game():
+	$MemoryGameTextBox.show()
+	$MemoryGameButton.show()
+	memory_game_instance = memory_game.instance()
+	memory_game_instance.difficulty = current_difficulty
+	memory_game_instance.connect("game_finished", self, "_on_game_finished")
 
 func _on_MemoryGameButton_pressed():
 	hide_main_screen()
 	add_child(memory_game_instance)
 
+# Running Yeeter Game
+func start_yeeter_game():
+	$EggYeeterTextBox.show()
+	$EggYeeterButton.show()
+	egg_yeeter_game_instance = egg_yeeter_game.instance()
+	egg_yeeter_game_instance.difficulty = current_difficulty
+	egg_yeeter_game_instance.connect("game_finished", self, "_on_game_finished")
+
 func _on_EggYeeterButton_pressed():
 	hide_main_screen()
 	add_child(egg_yeeter_game_instance)
+
+# Handler for when minigames finish
+func _on_game_finished(game_name, has_won):
+	print(game_name)
+	print(has_won)
 	
-func _on_FlappyBirdButton_pressed():
-	hide_main_screen()
-	add_child(flappy_bird_instance)
+	match game_name:
+		"flappy":
+			flappy_bird_instance.queue_free()
+			start_memory_game()
+		"memory":
+			memory_game_instance.queue_free()
+			start_yeeter_game()
+		"yeeter":
+			egg_yeeter_game_instance.queue_free()
+			start_hatching_cutscene()
+
+# Running Hatching Cutscene
+func start_hatching_cutscene():
+	$EggHatchTextBox.show()
+	proceed_to_next_act()
 	
 func proceed_to_next_act():
 	if current_act == 1:
@@ -87,4 +109,4 @@ func start_new_act_with_delay():
 	next_act_timer.start()
 	
 	yield(next_act_timer, "timeout")
-	handle_game_won("hatch")
+	start_flappy_bird()
