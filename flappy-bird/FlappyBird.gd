@@ -97,11 +97,11 @@ func create_goal():
 
 func game_over():
 	stop_scene()
-	create_timer(5.0, "return_to_main_menu", false)
+	create_timer(3.0, "return_to_main_menu", false)
 
 func level_complete():
 	stop_scene()
-	create_timer(5.0, "return_to_main_menu", false)
+	create_timer(3.0, "return_to_main_menu", false)
 
 func return_to_main_menu():
 	get_parent().game_over()
