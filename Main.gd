@@ -10,6 +10,7 @@ var current_act = 1
 
 func _ready():
 	hide_main_screen()
+	$Signposts.hide()
 	flappy_bird = preload("res://flappy-bird/FlappyBirdMain.tscn")
 	memory_game = preload("res://memory/MemoryGameMain.tscn")
 	egg_yeeter_game = preload("res://yeeter/yeeter.tscn")
@@ -36,14 +37,18 @@ func start_scene(text_node, button_node, scene):
 
 # Running Flappy Bird scene
 func start_flappy_scene():
+	$Signposts/Scene.text = "SCENE 1"
+	$Signposts/Act.text = "ACT " + str(current_act)
 	start_scene($FlappyBirdTextBox, $FlappyBirdButton, flappy_bird)
 
 # Running Memory scene
 func start_memory_scene():
+	$Signposts/Scene.text = "SCENE 2"
 	start_scene($MemoryGameTextBox, $MemoryGameButton, memory_game)
 
-# Running Yeeter scene
+	# Running Yeeter scene
 func start_yeeter_scene():
+	$Signposts/Scene.text = "SCENE 3"
 	start_scene($EggYeeterTextBox, $EggYeeterButton, egg_yeeter_game)
 
 # Handling start scene button pressed
