@@ -52,5 +52,5 @@ stream = ExtResource( 6 )
 [node name="LoseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 [connection signal="none_remaining" from="remaining" to="bird_cannon" method="_on_remaining_none_remaining"]
-[connection signal="none_remaining" from="remaining" to="." method="_on_remaining_none_remaining"]
 [connection signal="none_remaining" from="remaining" to="power_bar" method="_on_remaining_none_remaining"]
+[connection signal="none_remaining" from="remaining" to="." method="_on_remaining_none_remaining"]

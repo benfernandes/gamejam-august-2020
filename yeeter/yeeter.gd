@@ -16,7 +16,7 @@ var medium_config = {
 	"target_eggs": 5
 }
 var hard_config = {
-	"target_eggs": 1
+	"target_eggs": 7
 }
 
 # Remaining bar
