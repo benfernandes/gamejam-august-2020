@@ -15,4 +15,3 @@ layer = 0
 
 [node name="SecondTicker" type="Timer" parent="."]
 [connection signal="timeout" from="SecondTicker" to="." method="_on_SecondTicker_timeout"]
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

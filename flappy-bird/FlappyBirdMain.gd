@@ -1,8 +1,8 @@
 extends Node
-var difficulty = "easy"
+var difficulty
 
 func _ready():
-	print(difficulty)
+	print("Flappy bird difficulty: " + difficulty)
 	$FlappyBird.show()
 	$FlappyBird.start(difficulty)
 

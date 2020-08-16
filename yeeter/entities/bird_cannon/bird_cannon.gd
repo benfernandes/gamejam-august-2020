@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var is_playing = false
+var is_playing = true
 
 # Egg scene
 export (PackedScene) var egg_scene
@@ -54,9 +54,6 @@ func shoot():
 
 func remap_range(input, minInput, maxInput, minOutput, maxOutput):
 	return(input - minInput) / (maxInput - minInput) * (maxOutput - minOutput) + minOutput
-
-func _on_start_overlay_ready_to_start():
-	is_playing = true
 
 func _on_remaining_none_remaining():
 	is_playing = false

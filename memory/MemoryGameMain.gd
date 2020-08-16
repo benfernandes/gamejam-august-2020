@@ -3,9 +3,10 @@ extends Node
 var number_of_matches = 0
 var max_matches = 7
 var game_time
-var difficulty = "easy"
+var difficulty
 
 func _ready():
+	print("Memory difficulty" + difficulty)
 	match difficulty:
 		"easy":
 			game_time = 45
