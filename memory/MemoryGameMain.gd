@@ -1,6 +1,6 @@
 extends Node
 
-signal scene_finished(game_name, has_won)
+signal scene_finished(has_won)
 
 var number_of_matches = 0
 var max_matches = 7
@@ -58,7 +58,7 @@ func game_over():
 	end_timer.start()
 	
 	yield(end_timer, "timeout")
-	emit_signal("scene_finished", "memory", has_won)
+	emit_signal("scene_finished", has_won)
 
 func _on_SecondTicker_timeout():
 	game_time -= 1

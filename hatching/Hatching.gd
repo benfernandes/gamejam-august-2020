@@ -1,6 +1,6 @@
 extends Node2D
 
-signal scene_finished(game_name, has_won)
+signal scene_finished(has_won)
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -19,7 +19,7 @@ func start():
 
 func _on_ContinueButton_pressed():
 	get_parent().get_node("EggHatchMusic").stop()
-	emit_signal("scene_finished", "hatch", true)
+	emit_signal("scene_finished", true)
 
 func _on_Egg_animation_finished():
 	if difficulty == "easy":

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/background-v1.png" type="Texture" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://assets/sign-right.svg" type="Texture" id=5]
 [ext_resource path="res://assets/mii.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/hatch.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/success.png" type="Texture" id=8]
+[ext_resource path="res://assets/well-done.png" type="Texture" id=9]
+[ext_resource path="res://assets/game-over.png" type="Texture" id=10]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -23,41 +26,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MemoryGameButton" type="Button" parent="."]
+[node name="StartGameButton" type="Button" parent="."]
 margin_left = 272.0
 margin_top = 320.0
 margin_right = 452.0
 margin_bottom = 410.0
-text = "Play"
+text = "PLAY"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="EggYeeterButton" type="Button" parent="."]
-margin_left = 272.0
-margin_top = 320.0
-margin_right = 452.0
-margin_bottom = 410.0
-text = "Play"
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="FlappyBirdButton" type="Button" parent="."]
-margin_left = 272.0
-margin_top = 320.0
-margin_right = 452.0
-margin_bottom = 410.0
-text = "Play"
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
 [node name="MainStartScreen" parent="." instance=ExtResource( 3 )]
 
-[node name="MemoryGameTextBox" type="TextureRect" parent="."]
+[node name="MainTextBox" type="TextureRect" parent="."]
 margin_left = 184.0
 margin_top = 80.0
 margin_right = 357.0
@@ -71,82 +52,13 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="MemoryGameText" type="Label" parent="MemoryGameTextBox"]
-margin_left = 16.0
-margin_right = 296.0
-margin_bottom = 202.0
+[node name="MainText" type="Label" parent="MainTextBox"]
+margin_left = 6.0
+margin_top = 5.0
+margin_right = 328.0
+margin_bottom = 187.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "This place looks nice. Better build a nest! 
-
-
-Click a card to flip it and reveal something you might want for your nest.
-
-Find all the matching pairs within the time limit to win the game!"
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="EggYeeterTextBox" type="TextureRect" parent="."]
-margin_left = 184.0
-margin_top = 80.0
-margin_right = 357.0
-margin_bottom = 182.0
-rect_scale = Vector2( 2, 2 )
-mouse_filter = 2
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="EggYeeterText" type="Label" parent="EggYeeterTextBox"]
-margin_left = 16.0
-margin_right = 296.0
-margin_bottom = 202.0
-rect_scale = Vector2( 0.5, 0.5 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "What a lovely nest! Well done. Now time to lay some eggs! 
-
-Hold space to lay an egg and use the left and right buttons to aim. Release the spacebar to  shoot the egg out.
-
-Get as many eggs as you can into the backet!"
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="FlappyBirdTextBox" type="TextureRect" parent="."]
-margin_left = 184.0
-margin_top = 80.0
-margin_right = 357.0
-margin_bottom = 182.0
-rect_scale = Vector2( 2, 2 )
-mouse_filter = 2
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="FlappyBirdText" type="Label" parent="FlappyBirdTextBox"]
-margin_left = 16.0
-margin_right = 296.0
-margin_bottom = 202.0
-rect_scale = Vector2( 0.5, 0.5 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "It's time to fly the nest and find somewhere to settle down. 
-
-Tap space to fly and avoid the obstacles!"
 align = 1
 valign = 1
 autowrap = true
@@ -192,7 +104,40 @@ stream = ExtResource( 6 )
 
 [node name="EggHatchMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-[connection signal="pressed" from="MemoryGameButton" to="." method="_on_start_scene_button_pressed"]
-[connection signal="pressed" from="EggYeeterButton" to="." method="_on_start_scene_button_pressed"]
-[connection signal="pressed" from="FlappyBirdButton" to="." method="_on_start_scene_button_pressed"]
+
+[node name="EndOfGameBanners" type="Node2D" parent="."]
+
+[node name="win_banner" type="TextureRect" parent="EndOfGameBanners"]
+margin_left = 232.0
+margin_top = 3.0
+margin_right = 552.0
+margin_bottom = 137.0
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 8 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lose_banner" type="TextureRect" parent="EndOfGameBanners"]
+margin_left = 195.0
+margin_top = 55.378
+margin_right = 607.0
+margin_bottom = 116.378
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="finish_banner" type="TextureRect" parent="EndOfGameBanners"]
+margin_left = 155.0
+margin_top = 49.622
+margin_right = 565.0
+margin_bottom = 110.622
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="begin" from="MainStartScreen" to="." method="_on_main_start_game"]

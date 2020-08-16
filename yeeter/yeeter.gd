@@ -1,6 +1,6 @@
 extends Control
 
-signal scene_finished(game_name, has_won)
+signal scene_finished(has_won)
 
 var no_eggs_remaining = false
 var is_finished = false
@@ -10,13 +10,13 @@ var target_eggs
 # Configurations
 var config
 var easy_config = {
-	"target_eggs": 5
+	"target_eggs": 3
 }
 var medium_config = {
-	"target_eggs": 7
+	"target_eggs": 5
 }
 var hard_config = {
-	"target_eggs": 10
+	"target_eggs": 1
 }
 
 # Remaining bar
@@ -59,7 +59,7 @@ func _try_to_trigger_end_screen():
 			$WinSound.play()
 		else:
 			$LoseSound.play()
-		emit_signal("scene_finished", "yeeter", won)
+		emit_signal("scene_finished", won)
 
 # Triggered when the user runs out of eggs
 func _on_remaining_none_remaining():
