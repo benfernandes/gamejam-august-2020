@@ -72,6 +72,13 @@ func start(difficulty):
 	show()
 	create_obstacle()
 
+func _process(delta):
+	if goal_timer != null:
+		if prepare_goal_timer != null:
+			$Timer.text = str(stepify(prepare_goal_timer.time_left, 0.1))
+		else:
+			$Timer.text = str(stepify(goal_timer.time_left + 2, 0.1))
+
 func increase_difficulty():
 	speed = speed + config.speed_increase
 	obstacle_timer.set_wait_time(obstacle_timer.get_wait_time() - config.spawn_time_decrease)
