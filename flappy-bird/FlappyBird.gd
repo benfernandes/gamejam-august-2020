@@ -29,7 +29,7 @@ func start():
 	create_obstacle()
 
 	obstacle_timer = create_timer(3.0, "create_obstacle", true)
-	goal_timer = create_timer(6.0, "prepare_goal", true)
+	goal_timer = create_timer(60.0, "prepare_goal", true)
 	difficulty_timer = create_timer(2.5, "increase_difficulty", true)
 
 func increase_difficulty():
