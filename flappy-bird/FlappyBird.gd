@@ -8,7 +8,7 @@ var speed = 100
 var obstacles
 var current_obstacles = []
 var goal
-var goal_instance
+var goal_instance = null
 
 func _ready():
 	hide()
@@ -35,6 +35,8 @@ func start():
 func increase_difficulty():
 	speed = speed + 10
 	obstacle_timer.set_wait_time(obstacle_timer.get_wait_time() - 0.1)
+	for obstacle in current_obstacles:
+	  obstacle.set_speed(speed)
 
 func create_obstacle():
 	var index = randi() % obstacles.size()
