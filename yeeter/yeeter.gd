@@ -37,6 +37,7 @@ func _ready():
 			config = medium_config
 		"hard": 
 			config = hard_config
+	bird_cannon.set_difficulty(difficulty)
 	
 	target_eggs = config.target_eggs
 
