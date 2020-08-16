@@ -25,6 +25,7 @@ func hide_main_screen():
 	$FlappyBirdButton.hide()
 
 func _on_main_start_game():
+	$Signposts.show()
 	start_flappy_scene()
 
 # Temp
