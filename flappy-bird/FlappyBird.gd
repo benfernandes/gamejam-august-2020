@@ -33,6 +33,7 @@ var obstacles
 var current_obstacles = []
 var goal
 var goal_instance = null
+var player
 
 func _ready():
 	hide()
@@ -51,10 +52,17 @@ func _ready():
 func start(difficulty):
 	if (difficulty == "easy"):
 		config = easy_config
+		var easy_player = preload("./Players/EasyPlayer.tscn")
+		player = easy_player.instance()
 	if (difficulty == "medium"):
 		config = medium_config
+		var medium_player = preload("./Players/MediumPlayer.tscn")
+		player = medium_player.instance()
 	if (difficulty == "hard"):
 		config = hard_config
+		var hard_player = preload("./Players/HardPlayer.tscn")
+		player = hard_player.instance()
+	add_child(player)
 
 	speed = config.start_speed
 	obstacle_timer = create_timer(config.obstacle_start_time, "create_obstacle", true)
@@ -107,7 +115,7 @@ func stop_scene():
 		prepare_goal_timer.stop()
 	if goal_instance != null:
 		goal_instance.stop()
-	get_node("Player/KinematicBody2D").stop()
+	player.stop()
 	for obstacle in current_obstacles:
 	  obstacle.stop()
 
