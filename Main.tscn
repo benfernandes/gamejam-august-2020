@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/background-v1.png" type="Texture" id=2]
 [ext_resource path="res://MainStartScreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/text_container_2.png" type="Texture" id=4]
 [ext_resource path="res://assets/sign-right.svg" type="Texture" id=5]
+[ext_resource path="res://assets/success.png" type="Texture" id=6]
+[ext_resource path="res://assets/well-done.png" type="Texture" id=7]
+[ext_resource path="res://assets/game-over.png" type="Texture" id=8]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -90,6 +93,43 @@ margin_top = 328.147
 margin_right = 699.659
 margin_bottom = 348.147
 text = "SCENE 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndOfGameBanners" type="Node" parent="."]
+
+[node name="win_banner" type="TextureRect" parent="EndOfGameBanners"]
+margin_left = 232.0
+margin_top = 3.0
+margin_right = 552.0
+margin_bottom = 137.0
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 6 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lose_banner" type="TextureRect" parent="EndOfGameBanners"]
+visible = false
+margin_left = 195.0
+margin_top = 55.378
+margin_right = 607.0
+margin_bottom = 116.378
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="finish_banner" type="TextureRect" parent="EndOfGameBanners"]
+visible = false
+margin_left = 155.0
+margin_top = 49.622
+margin_right = 565.0
+margin_bottom = 110.622
+texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
