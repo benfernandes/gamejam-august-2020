@@ -31,6 +31,7 @@ func _process(delta):
 		if remaining.get_value() > 0:
 			bird_cannon.shoot()
 			remaining.decrement_value()
+			value = 0
 
 func _on_start_overlay_ready_to_start():
 	is_playing = true

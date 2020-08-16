@@ -49,6 +49,11 @@ func shoot():
 	egg.global_position = egg_spawn.global_position
 	egg.shoot(initial_vector, rotation_degrees)
 	get_parent().add_child(egg)
+	
+	global_rotation_degrees += remap_range(power_bar.value, 0, 100, 0, 10)
+
+func remap_range(input, minInput, maxInput, minOutput, maxOutput):
+	return(input - minInput) / (maxInput - minInput) * (maxOutput - minOutput) + minOutput
 
 func _on_start_overlay_ready_to_start():
 	is_playing = true
