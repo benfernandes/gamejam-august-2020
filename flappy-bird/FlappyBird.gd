@@ -97,16 +97,19 @@ func create_goal():
 
 func game_over():
 	stop_scene()
+	$LoseSound.play()
 	create_timer(3.0, "return_to_main_menu", false)
 
 func level_complete():
 	stop_scene()
+	$WinSound.play()
 	create_timer(3.0, "return_to_main_menu", false)
 
 func return_to_main_menu():
 	get_parent().game_over()
 
 func stop_scene():
+	get_parent().get_node("Music").stop()
 	obstacle_timer.stop()
 	goal_timer.stop()
 	difficulty_timer.stop()
