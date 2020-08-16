@@ -18,6 +18,7 @@ func _ready():
 	hide_main_screen()
 	hide_banner_buttons()
 	$Signposts.hide()
+	$BackgroundMusic.play()
 	flappy_bird = preload("res://flappy-bird/FlappyBirdMain.tscn")
 	memory_game = preload("res://memory/MemoryGameMain.tscn")
 	egg_yeeter_game = preload("res://yeeter/yeeter.tscn")
@@ -34,7 +35,8 @@ func hide_main_screen():
 
 func _on_main_start_game():
 	$Signposts.show()
-	start_yeeter_scene()
+	$BackgroundMusic.stop()
+	start_flappy_scene()
 
 func start_scene(start_screen_text, scene, scene_name):
 	main_action_button_func = funcref(self, 'start_game')
@@ -78,6 +80,7 @@ func start_game():
 # Running Hatching scene
 func start_hatch_scene():
 	hide_main_screen()
+	$EggHatchMusic.play()
 	current_game_name = "hatch"
 	scene_instance = hatch_scene.instance()
 	scene_instance.difficulty = current_difficulty

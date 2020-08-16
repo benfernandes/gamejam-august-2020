@@ -4,6 +4,7 @@ var obstacle_timer
 var goal_timer
 var difficulty_timer
 var prepare_goal_timer = null
+var isStopped = false
 
 var config
 var easy_config = {
@@ -73,7 +74,7 @@ func start(difficulty):
 	create_obstacle()
 
 func _process(delta):
-	if goal_timer != null:
+	if !isStopped && goal_timer != null:
 		if prepare_goal_timer != null:
 			$Timer.text = str(stepify(prepare_goal_timer.time_left, 0.1))
 		else:
@@ -116,6 +117,7 @@ func return_to_main_menu(has_won):
 	get_parent().game_over(has_won)
 
 func stop_scene():
+	isStopped = true
 	get_parent().get_node("Music").stop()
 	obstacle_timer.stop()
 	goal_timer.stop()
@@ -128,6 +130,7 @@ func stop_scene():
 	player.stop()
 	for obstacle in current_obstacles:
 	  obstacle.stop()
+
 
 func create_timer(timeout, callback, shouldRepeat, params):
 	var timer = Timer.new()

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mii.wav-c098bbdaec42034391f8702325d1588b.sample"
+
+[deps]
+
+source_file="res://assets/mii.wav"
+dest_files=[ "res://.import/mii.wav-c098bbdaec42034391f8702325d1588b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

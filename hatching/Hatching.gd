@@ -18,6 +18,7 @@ func start():
 	$Egg.play("default")
 
 func _on_ContinueButton_pressed():
+	get_parent().get_node("EggHatchMusic").stop()
 	emit_signal("scene_finished", true)
 
 func _on_Egg_animation_finished():

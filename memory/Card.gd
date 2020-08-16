@@ -9,8 +9,7 @@ func _ready():
 	card_name = "Not initialized"
 	allow_click = true
 	front_image = preload("res://assets/memory/card-back.png")
-	back_image = preload("res://assets/memory/card-back.png")
-	get_node("Sprite").texture = back_image
+	set_back_image(preload("res://assets/memory/card-back.png"))
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton \
@@ -32,3 +31,7 @@ func on_click():
 
 func show_front_image():
 	get_node("Sprite").texture = front_image
+
+func set_back_image(image):
+	back_image = image
+	get_node("Sprite").texture = image
