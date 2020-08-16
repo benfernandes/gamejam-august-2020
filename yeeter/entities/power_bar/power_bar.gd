@@ -1,6 +1,6 @@
 extends ProgressBar
 
-var is_playing = false
+var is_playing = true
 var direction = 1
 
 # Bird cannon
@@ -32,9 +32,6 @@ func _process(delta):
 			bird_cannon.shoot()
 			remaining.decrement_value()
 			value = 0
-
-func _on_start_overlay_ready_to_start():
-	is_playing = true
 
 func _on_remaining_none_remaining():
 	is_playing = false

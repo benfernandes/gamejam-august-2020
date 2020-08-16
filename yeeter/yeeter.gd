@@ -4,6 +4,20 @@ signal game_finished
 
 var no_eggs_remaining = false
 var is_finished = false
+var difficulty
+var target_eggs
+
+# Configurations
+var config
+var easy_config = {
+	"target_eggs": 5
+}
+var medium_config = {
+	"target_eggs": 7
+}
+var hard_config = {
+	"target_eggs": 10
+}
 
 # Remaining bar
 export (NodePath) var remaining_path
@@ -13,10 +27,19 @@ onready var remaining = get_node(remaining_path)
 export (NodePath) var bird_cannon_path
 onready var bird_cannon = get_node(bird_cannon_path)
 
-var difficulty = "easy"
-
 func _ready():
+	print("Yeeter difficulty: " + difficulty)
 	$end_overlay.hide()
+	match difficulty:
+		"easy":
+			config = easy_config
+		"medium":
+			config = medium_config
+		"hard": 
+			config = hard_config
+	
+	target_eggs = config.target_eggs
+
 	
 func _process(delta):
 	if !is_finished:
@@ -30,7 +53,7 @@ func _try_to_trigger_end_screen():
 	
 	if no_eggs_remaining:
 		is_finished = true
-		$end_overlay/end_message_container/end_message.text = "You scored: " + str(eggs.size())
+		$end_overlay/end_message_container/end_message.text = "You scored: " + str(eggs.size()) + "/" + str(target_eggs)
 		emit_signal("game_finished")
 
 # Triggered when the user runs out of eggs

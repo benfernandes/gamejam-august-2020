@@ -11,8 +11,8 @@ var current_act = 1
 
 func _ready():
 	hide_main_screen()
-	memory_game = preload("res://memory/MemoryGameMain.tscn")
 	flappy_bird = preload("res://flappy-bird/FlappyBirdMain.tscn")
+	memory_game = preload("res://memory/MemoryGameMain.tscn")
 	egg_yeeter_game = preload("res://yeeter/yeeter.tscn")
 
 func hide_main_screen():
@@ -25,7 +25,17 @@ func hide_main_screen():
 	$EggHatchTextBox.hide()
 	
 func handle_game_won(game):
-	if game == "memory":
+	if game == "hatch":
+		$FlappyBirdTextBox.show()
+		$FlappyBirdButton.show()
+		flappy_bird_instance = flappy_bird.instance()
+		flappy_bird_instance.difficulty = current_difficulty
+	elif game == "flappy":
+		$MemoryGameTextBox.show()
+		$MemoryGameButton.show()
+		memory_game_instance = memory_game.instance()
+		memory_game_instance.difficulty = current_difficulty
+	elif game == "memory":
 		$EggYeeterTextBox.show()
 		$EggYeeterButton.show()
 		egg_yeeter_game_instance = egg_yeeter_game.instance()
@@ -33,21 +43,12 @@ func handle_game_won(game):
 	elif game == "yeeter":
 		$EggHatchTextBox.show()
 		proceed_to_next_act()
-	elif game == "hatch":
-		$FlappyBirdTextBox.show()
-		$FlappyBirdButton.show()
-		flappy_bird_instance = flappy_bird.instance()
-		flappy_bird_instance.difficulty = current_difficulty	
-	elif game == "flappy":
-		$MemoryGameTextBox.show()
-		$MemoryGameButton.show()
-		memory_game_instance = memory_game.instance()
-		memory_game_instance.difficulty = current_difficulty
-		
+
 func show_main_screen():
 	$FlappyBirdTextBox.show()
 	$FlappyBirdButton.show()
 	flappy_bird_instance = flappy_bird.instance()
+	flappy_bird_instance.difficulty = current_difficulty
 
 func _on_MemoryGameButton_pressed():
 	hide_main_screen()
