@@ -4,6 +4,8 @@ var memory_game
 var memory_game_instance
 var egg_yeeter_game
 var egg_yeeter_game_instance
+var hatch_scene
+var hatch_scene_instance
 var flappy_bird
 var flappy_bird_instance
 var current_difficulty = "easy"
@@ -14,6 +16,7 @@ func _ready():
 	flappy_bird = preload("res://flappy-bird/FlappyBirdMain.tscn")
 	memory_game = preload("res://memory/MemoryGameMain.tscn")
 	egg_yeeter_game = preload("res://yeeter/yeeter.tscn")
+	hatch_scene = preload("res://hatching/Hatching.tscn")
 
 func hide_main_screen():
 	$MemoryGameTextBox.hide()
@@ -22,7 +25,6 @@ func hide_main_screen():
 	$EggYeeterButton.hide()
 	$FlappyBirdTextBox.hide()
 	$FlappyBirdButton.hide()
-	$EggHatchTextBox.hide()
 	
 func handle_game_won(game):
 	if game == "hatch":
@@ -41,7 +43,6 @@ func handle_game_won(game):
 		egg_yeeter_game_instance = egg_yeeter_game.instance()
 		egg_yeeter_game_instance.difficulty = current_difficulty
 	elif game == "yeeter":
-		$EggHatchTextBox.show()
 		proceed_to_next_act()
 
 func show_main_screen():
@@ -67,24 +68,21 @@ func proceed_to_next_act():
 		current_act = 2
 		current_difficulty = "medium"
 		print("Setting difficulty to medium")
-		start_new_act_with_delay()
+		start_new_act()
 		return
 	elif current_act == 2:
 		current_act = 3
 		current_difficulty = "hard"		
 		print("Setting difficulty to hard")
-		start_new_act_with_delay()
+		start_new_act()
 		return
 	elif current_act == 3:
 		print("finished")
 		# TODO: handle game finish
 		
-func start_new_act_with_delay():
-	var next_act_timer = Timer.new()
-	next_act_timer.set_wait_time(3)
-	next_act_timer.set_one_shot(true)
-	self.add_child(next_act_timer)
-	next_act_timer.start()
-	
-	yield(next_act_timer, "timeout")
-	handle_game_won("hatch")
+func start_new_act():
+	hide_main_screen()
+	hatch_scene_instance = hatch_scene.instance()
+	hatch_scene_instance.difficulty = current_difficulty
+	add_child(hatch_scene_instance)
+	hatch_scene_instance.start()

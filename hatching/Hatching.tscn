@@ -1,0 +1,188 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://assets/egg-cracking.svg" type="Texture" id=1]
+[ext_resource path="res://yeeter/entities/nest/assets/nest.svg" type="Texture" id=2]
+[ext_resource path="res://assets/text_container_2.png" type="Texture" id=3]
+[ext_resource path="res://hatching/Hatching.gd" type="Script" id=4]
+[ext_resource path="res://assets/basic-bird-flying-right.svg" type="Texture" id=5]
+[ext_resource path="res://assets/hawk-flying.svg" type="Texture" id=6]
+
+[sub_resource type="Curve2D" id=8]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 309.738, 304.832, -9.40273, 32.5582, 9.40273, -32.5582, 316.484, 231.856, 0, 0, 0, 0, 340.295, 190.583, -22.646, 2.02153, 22.646, -2.02153, 369.266, 174.312, -6.09191, -5.77581, 6.09191, 5.77581, 403.791, 186.615, -2.25136, -7.50855, 2.25136, 7.50855, 422.047, 226.697, 0, 0, 0, 0, 431.709, 290.803 )
+}
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 755, 604 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 755, 0, 755, 604 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 1510, 0, 755, 604 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 2265, 0, 755, 604 )
+
+[sub_resource type="SpriteFrames" id=18]
+animations = [ {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 755, 604 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 755, 0, 755, 604 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 1510, 0, 755, 604 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 2265, 0, 755, 604 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 226, 302 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 226, 0, 226, 302 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 452, 0, 226, 302 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 678, 0, 226, 302 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 904, 0, 226, 302 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1130, 0, 226, 302 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": false,
+"name": "default",
+"speed": 1.0
+} ]
+
+[node name="Hatching" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 211.573
+margin_top = 47.6923
+margin_right = 529.573
+margin_bottom = 163.692
+texture = ExtResource( 3 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextureRect"]
+margin_left = 98.4494
+margin_top = 42.7066
+margin_right = 224.449
+margin_bottom = 73.7066
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "What?
+The egg is hatching!"
+align = 1
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2( 0, 25.6845 )
+scale = Vector2( 1, 0.917156 )
+curve = SubResource( 8 )
+
+[node name="Follow" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 309.738, 304.832 )
+rotation = -1.47863
+rotate = false
+loop = false
+
+[node name="EasyBird" type="AnimatedSprite" parent="Path2D/Follow"]
+position = Vector2( 1.18359, 6.79419 )
+rotation = 1.47863
+scale = Vector2( 0.15, 0.15 )
+frames = SubResource( 18 )
+frame = 2
+playing = true
+
+[node name="MediumBird" type="AnimatedSprite" parent="Path2D/Follow"]
+position = Vector2( 1.18359, 6.79419 )
+rotation = 1.47863
+scale = Vector2( 0.15, 0.15 )
+frames = SubResource( 13 )
+frame = 3
+playing = true
+
+[node name="HardBird" type="AnimatedSprite" parent="Path2D/Follow"]
+position = Vector2( 1.18359, 6.79419 )
+rotation = 1.47863
+scale = Vector2( 0.15, 0.15 )
+frames = SubResource( 13 )
+frame = 3
+playing = true
+
+[node name="Egg" type="AnimatedSprite" parent="."]
+position = Vector2( 317.985, 295.034 )
+scale = Vector2( 0.523204, 0.5 )
+frames = SubResource( 7 )
+
+[node name="ContinueButton" type="Button" parent="."]
+margin_left = 294.416
+margin_top = 415.844
+margin_right = 441.416
+margin_bottom = 469.844
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 366.479, 348.053 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 2 )
+[connection signal="animation_finished" from="Egg" to="." method="_on_Egg_animation_finished"]
+[connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]
