@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/flappy-bird/campfire.png" type="Texture" id=1]
+[ext_resource path="res://flappy-bird/Obstacles/Obstacle.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 44.0774
+height = 76.5172
+
+[node name="CampFire" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 841.945, 399.215 )
+scale = Vector2( 0.356998, 0.376273 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 832.907, 376.301 )
+rotation = 0.445059
+shape = SubResource( 1 )
