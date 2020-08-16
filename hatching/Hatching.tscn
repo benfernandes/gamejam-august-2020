@@ -146,7 +146,7 @@ position = Vector2( 1.18359, 6.79419 )
 rotation = 1.47863
 scale = Vector2( 0.15, 0.15 )
 frames = SubResource( 6 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="MediumBird" type="AnimatedSprite" parent="Path2D/Follow"]
@@ -154,6 +154,7 @@ position = Vector2( 1.18359, 6.79419 )
 rotation = 1.47863
 scale = Vector2( 0.15, 0.15 )
 frames = SubResource( 11 )
+frame = 2
 playing = true
 
 [node name="HardBird" type="AnimatedSprite" parent="Path2D/Follow"]
@@ -161,6 +162,7 @@ position = Vector2( 1.18359, 6.79419 )
 rotation = 1.47863
 scale = Vector2( 0.15, 0.15 )
 frames = SubResource( 11 )
+frame = 2
 playing = true
 
 [node name="Egg" type="AnimatedSprite" parent="."]

@@ -1,6 +1,6 @@
 extends Node2D
 
-signal game_finished(game_name, has_won)
+signal scene_finished(game_name, has_won)
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -18,7 +18,7 @@ func start():
 	$Egg.play("default")
 
 func _on_ContinueButton_pressed():
-	emit_signal("game_finished", "hatch", true)
+	emit_signal("scene_finished", "hatch", true)
 
 func _on_Egg_animation_finished():
 	if difficulty == "easy":

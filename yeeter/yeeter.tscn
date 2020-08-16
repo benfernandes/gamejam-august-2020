@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://yeeter/yeeter.gd" type="Script" id=1]
 [ext_resource path="res://yeeter/entities/nest/nest.tscn" type="PackedScene" id=2]
 [ext_resource path="res://yeeter/entities/power_bar/power_bar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://yeeter/entities/remaining/remaining.tscn" type="PackedScene" id=4]
 [ext_resource path="res://yeeter/entities/bird_cannon/bird_cannon.tscn" type="PackedScene" id=5]
-[ext_resource path="res://yeeter/overlays/end_overlay/end_overlay.tscn" type="PackedScene" id=7]
 
 [node name="yeeter" type="Control"]
 anchor_right = 1.0
@@ -40,10 +39,6 @@ margin_bottom = 61.4057
 [node name="nest" parent="." instance=ExtResource( 2 )]
 position = Vector2( 534.073, 248.559 )
 scale = Vector2( 0.402234, 0.402234 )
-
-[node name="end_overlay" parent="." instance=ExtResource( 7 )]
-[connection signal="game_finished" from="." to="." method="_on_yeeter_game_finished"]
+[connection signal="none_remaining" from="remaining" to="bird_cannon" method="_on_remaining_none_remaining"]
 [connection signal="none_remaining" from="remaining" to="." method="_on_remaining_none_remaining"]
 [connection signal="none_remaining" from="remaining" to="power_bar" method="_on_remaining_none_remaining"]
-[connection signal="none_remaining" from="remaining" to="bird_cannon" method="_on_remaining_none_remaining"]
-[connection signal="ready_to_end" from="end_overlay" to="." method="_on_end_overlay_ready_to_end"]
