@@ -3,6 +3,7 @@ extends Node2D
 var obstacle_timer
 var goal_timer
 var difficulty_timer
+var prepare_goal_timer
 
 var speed = 100
 var obstacles
@@ -46,10 +47,9 @@ func create_obstacle():
 	obstacle.set_speed(speed)
 
 func prepare_goal():
-	print("prepare goal")
 	obstacle_timer.stop()
 	goal_timer.stop()
-	create_timer(2.0, "create_goal", false)
+	prepare_goal_timer = create_timer(2.0, "create_goal", false)
 
 func create_goal():
 	goal_instance = goal.instance()
@@ -70,6 +70,7 @@ func return_to_main_menu():
 func stop_scene():
 	obstacle_timer.stop()
 	goal_timer.stop()
+	prepare_goal_timer.stop()
 	difficulty_timer.stop()
 	for obstacle in current_obstacles:
 	  obstacle.stop()
