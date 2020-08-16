@@ -8,8 +8,8 @@ var hatch_scene
 var hatch_scene_instance
 var flappy_bird
 var flappy_bird_instance
-var current_difficulty = "medium"
-var current_act = 2
+var current_difficulty = "easy"
+var current_act = 1
 
 func _ready():
 	hide_main_screen()
