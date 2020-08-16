@@ -1,9 +1,8 @@
 extends CanvasLayer
 
-signal start_game
+signal begin
 
 func _on_StartButton_pressed():
 	$StartButton.hide()
-	$Instructions.hide()
-	emit_signal("start_game")
-
+	$GameTitleLabel.hide()
+	emit_signal("begin")

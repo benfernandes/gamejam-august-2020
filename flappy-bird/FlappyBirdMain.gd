@@ -1,14 +1,11 @@
 extends Node
-
 var difficulty = "easy"
 
 func _ready():
-	pass # Replace with function body.
-
-func new_game():
+	print(difficulty)
 	$FlappyBird.show()
 	$FlappyBird.start(difficulty)
 
 func game_over():
-	get_parent().show_main_screen()
+	get_parent().handle_game_won("flappy")
 	queue_free()

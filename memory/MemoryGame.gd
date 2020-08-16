@@ -10,9 +10,6 @@ var selected_card2_image
 var number_of_matches
 
 func _ready():
-	hide()
-	
-func start():
 	selected_card1_image = "Card 1"
 	selected_card2_image = "Card 2"
 	card_default = preload("res://assets/memory/card-back.png")
@@ -64,7 +61,6 @@ func shuffle_cards():
 		get_node(pair_card1).card_name = images[i].name
 		get_node(pair_card2).front_image = images[i].image
 		get_node(pair_card2).card_name = images[i].name
-	
 		
 func check_if_match():
 	disable_card_clicks()

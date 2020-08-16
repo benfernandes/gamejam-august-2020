@@ -13,6 +13,8 @@ onready var remaining = get_node(remaining_path)
 export (NodePath) var bird_cannon_path
 onready var bird_cannon = get_node(bird_cannon_path)
 
+var difficulty = "easy"
+
 func _ready():
 	$end_overlay.hide()
 	
@@ -43,7 +45,7 @@ func _on_back_button_pressed():
 	close_game()
 
 func close_game():
-	get_parent().show_main_screen()
+	get_parent().handle_game_won("yeeter")
 	queue_free()
 
 func _on_yeeter_game_finished():

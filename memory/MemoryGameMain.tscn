@@ -14,16 +14,5 @@ z_index = 1
 layer = 0
 
 [node name="SecondTicker" type="Timer" parent="."]
-
-[node name="Button" type="Button" parent="."]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 40.0
-margin_bottom = 40.0
-text = "<"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="SecondTicker" to="." method="_on_SecondTicker_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
