@@ -35,8 +35,7 @@ func game_over():
 	end_timer.start()
 	
 	yield(end_timer, "timeout")
-	get_parent().handle_game_won("memory")
-	queue_free()
+	close_game()
 
 func _on_SecondTicker_timeout():
 	game_time -= 1
@@ -46,3 +45,9 @@ func _on_SecondTicker_timeout():
 		$SecondTicker.stop()
 		game_over()
 	
+func _on_Button_pressed():
+	close_game()
+	
+func close_game():
+	get_parent().handle_game_won("memory")
+	queue_free()

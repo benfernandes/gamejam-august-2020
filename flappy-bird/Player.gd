@@ -35,4 +35,7 @@ func set_bird_angle():
 	var max_angle = -20
 	var clamped_velocity = clamp(velocity, min_velocity, max_velocity)
 	
-	global_rotation_degrees = (clamped_velocity - min_velocity) / (max_velocity - min_velocity) * (max_angle - min_angle) + min_angle
+	global_rotation_degrees = remap_range(clamped_velocity, min_velocity, max_velocity, min_angle, max_angle)
+
+func remap_range(input, minInput, maxInput, minOutput, maxOutput):
+	return(input - minInput) / (maxInput - minInput) * (maxOutput - minOutput) + minOutput

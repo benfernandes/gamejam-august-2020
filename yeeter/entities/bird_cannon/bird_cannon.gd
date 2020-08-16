@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var is_playing = false
+
 # Egg scene
 export (PackedScene) var egg_scene
 
@@ -27,9 +29,9 @@ func _get_rads_from_degs(degs):
 	return (degs * PI) / 180
 
 func _process(delta):
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("ui_left") && is_playing:
 		rotation_degrees -= 1
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("ui_right") && is_playing:
 		rotation_degrees += 1
 
 func _get_real_angle_from_global_rotation(angle):
@@ -47,3 +49,14 @@ func shoot():
 	egg.global_position = egg_spawn.global_position
 	egg.shoot(initial_vector, rotation_degrees)
 	get_parent().add_child(egg)
+	
+	global_rotation_degrees += remap_range(power_bar.value, 0, 100, 0, 10)
+
+func remap_range(input, minInput, maxInput, minOutput, maxOutput):
+	return(input - minInput) / (maxInput - minInput) * (maxOutput - minOutput) + minOutput
+
+func _on_start_overlay_ready_to_start():
+	is_playing = true
+
+func _on_remaining_none_remaining():
+	is_playing = false
