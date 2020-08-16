@@ -2,6 +2,7 @@ extends Node
 var difficulty = "easy"
 
 func _ready():
+	print(difficulty)
 	$FlappyBird.show()
 	$FlappyBird.start(difficulty)
 

@@ -48,7 +48,6 @@ func show_main_screen():
 	$FlappyBirdTextBox.show()
 	$FlappyBirdButton.show()
 	flappy_bird_instance = flappy_bird.instance()
-	flappy_bird_instance.difficulty = current_difficulty	
 
 func _on_MemoryGameButton_pressed():
 	hide_main_screen()
