@@ -40,5 +40,6 @@ func _on_FlappyBirdButton_pressed():
 	flappy_bird_instance = flappy_bird.instance()
 	_hide_main_screen()
 	add_child(flappy_bird_instance)
+	flappy_bird_instance.difficulty = "easy"
 
 # add functions to play other minigames here

@@ -3,9 +3,32 @@ extends Node2D
 var obstacle_timer
 var goal_timer
 var difficulty_timer
-var prepare_goal_timer
+var prepare_goal_timer = null
 
-var speed = 100
+var config
+var easy_config = {
+	"game_time": 30,
+	"obstacle_start_time": 5,
+	"start_speed": 75,
+	"speed_increase": 20,
+	"spawn_time_decrease": 0.15
+}
+var medium_config = {
+	"game_time": 60,
+	"obstacle_start_time": 4,
+	"start_speed": 75,
+	"speed_increase": 10,
+	"spawn_time_decrease": 0.1
+}
+var hard_config = {
+	"game_time": 60,
+	"obstacle_start_time": 3,
+	"start_speed": 100,
+	"speed_increase": 10,
+	"spawn_time_decrease": 0.1
+}
+
+var speed
 var obstacles
 var current_obstacles = []
 var goal
@@ -25,17 +48,25 @@ func _ready():
 	]
 	goal = preload("./Goal.tscn")
 
-func start():
+func start(difficulty):
+	if (difficulty == "easy"):
+		config = easy_config
+	if (difficulty == "medium"):
+		config = medium_config
+	if (difficulty == "hard"):
+		config = hard_config
+
+	speed = config.start_speed
+	obstacle_timer = create_timer(config.obstacle_start_time, "create_obstacle", true)
+	goal_timer = create_timer(config.game_time, "prepare_goal", true)
+	difficulty_timer = create_timer(2.5, "increase_difficulty", true)
+
 	show()
 	create_obstacle()
 
-	obstacle_timer = create_timer(3.0, "create_obstacle", true)
-	goal_timer = create_timer(60.0, "prepare_goal", true)
-	difficulty_timer = create_timer(2.5, "increase_difficulty", true)
-
 func increase_difficulty():
-	speed = speed + 10
-	obstacle_timer.set_wait_time(obstacle_timer.get_wait_time() - 0.1)
+	speed = speed + config.speed_increase
+	obstacle_timer.set_wait_time(obstacle_timer.get_wait_time() - config.spawn_time_decrease)
 	for obstacle in current_obstacles:
 	  obstacle.set_speed(speed)
 
@@ -70,13 +101,15 @@ func return_to_main_menu():
 func stop_scene():
 	obstacle_timer.stop()
 	goal_timer.stop()
-	prepare_goal_timer.stop()
 	difficulty_timer.stop()
-	for obstacle in current_obstacles:
-	  obstacle.stop()
+
+	if prepare_goal_timer != null:
+		prepare_goal_timer.stop()
 	if goal_instance != null:
 		goal_instance.stop()
 	get_node("Player/KinematicBody2D").stop()
+	for obstacle in current_obstacles:
+	  obstacle.stop()
 
 func create_timer(timeout, callback, shouldRepeat):
 	var timer = Timer.new()
