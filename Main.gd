@@ -1,13 +1,10 @@
 extends Node
 
 var memory_game
-var memory_game_instance
 var egg_yeeter_game
-var egg_yeeter_game_instance
 var hatch_scene
-var hatch_scene_instance
 var flappy_bird
-var flappy_bird_instance
+var scene_instance
 var current_difficulty = "easy"
 var current_act = 1
 
@@ -27,69 +24,55 @@ func hide_main_screen():
 	$FlappyBirdButton.hide()
 
 func _on_main_start_game():
-	start_yeeter_scene()
+	start_flappy_scene()
+
+# Temp
+func start_scene(text_node, button_node, scene):
+	text_node.show()
+	button_node.show()
+	scene_instance = scene.instance()
+	scene_instance.difficulty = current_difficulty
+	scene_instance.connect("scene_finished", self, "_on_scene_finished")
 
 # Running Flappy Bird scene
 func start_flappy_scene():
-	$FlappyBirdTextBox.show()
-	$FlappyBirdButton.show()
-	flappy_bird_instance = flappy_bird.instance()
-	flappy_bird_instance.difficulty = current_difficulty
-	flappy_bird_instance.connect("scene_finished", self, "_on_scene_finished")
-
-func _on_FlappyBirdButton_pressed():
-	hide_main_screen()
-	add_child(flappy_bird_instance)
+	start_scene($FlappyBirdTextBox, $FlappyBirdButton, flappy_bird)
 
 # Running Memory scene
 func start_memory_scene():
-	$MemoryGameTextBox.show()
-	$MemoryGameButton.show()
-	memory_game_instance = memory_game.instance()
-	memory_game_instance.difficulty = current_difficulty
-	memory_game_instance.connect("scene_finished", self, "_on_scene_finished")
-
-func _on_MemoryGameButton_pressed():
-	hide_main_screen()
-	add_child(memory_game_instance)
+	start_scene($MemoryGameTextBox, $MemoryGameButton, memory_game)
 
 # Running Yeeter scene
 func start_yeeter_scene():
-	$EggYeeterTextBox.show()
-	$EggYeeterButton.show()
-	egg_yeeter_game_instance = egg_yeeter_game.instance()
-	egg_yeeter_game_instance.difficulty = current_difficulty
-	egg_yeeter_game_instance.connect("scene_finished", self, "_on_scene_finished")
+	start_scene($EggYeeterTextBox, $EggYeeterButton, egg_yeeter_game)
 
-func _on_EggYeeterButton_pressed():
+# Handling start scene button pressed
+func _on_start_scene_button_pressed():
 	hide_main_screen()
-	add_child(egg_yeeter_game_instance)
+	add_child(scene_instance)
 
 # Running Hatching scene
 func start_hatch_scene():
 	hide_main_screen()
-	hatch_scene_instance = hatch_scene.instance()
-	hatch_scene_instance.difficulty = current_difficulty
-	hatch_scene_instance.connect("scene_finished", self, "_on_scene_finished")
-	add_child(hatch_scene_instance)
-	hatch_scene_instance.start()
+	scene_instance = hatch_scene.instance()
+	scene_instance.difficulty = current_difficulty
+	scene_instance.connect("scene_finished", self, "_on_scene_finished")
+	add_child(scene_instance)
+	scene_instance.start()
 
 # Handler for when minigames finish
 func _on_scene_finished(game_name, has_won):
 	print(game_name + " game finished with this result: " + str(has_won))
+	scene_instance.queue_free()
 	
 	match game_name:
 		"flappy":
-			flappy_bird_instance.queue_free()
 			start_memory_scene()
 		"memory":
-			memory_game_instance.queue_free()
 			start_yeeter_scene()
 		"yeeter":
-			egg_yeeter_game_instance.queue_free()
 			proceed_to_next_act()
 		"hatch":
-			hatch_scene_instance.queue_free()
 			start_flappy_scene()
 
 func proceed_to_next_act():

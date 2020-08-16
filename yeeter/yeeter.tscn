@@ -40,5 +40,5 @@ margin_bottom = 61.4057
 position = Vector2( 534.073, 248.559 )
 scale = Vector2( 0.402234, 0.402234 )
 [connection signal="none_remaining" from="remaining" to="bird_cannon" method="_on_remaining_none_remaining"]
-[connection signal="none_remaining" from="remaining" to="power_bar" method="_on_remaining_none_remaining"]
 [connection signal="none_remaining" from="remaining" to="." method="_on_remaining_none_remaining"]
+[connection signal="none_remaining" from="remaining" to="power_bar" method="_on_remaining_none_remaining"]
