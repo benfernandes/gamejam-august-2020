@@ -5,12 +5,15 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 
+var isStopped = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 func _physics_process(delta):
-	var collision = move_and_collide(Vector2(0, 0))
-	if collision:
-		get_parent().game_over()
+	if !isStopped:
+		var collision = move_and_collide(Vector2(0, 0))
+		if collision:
+			isStopped = true
+			get_parent().game_over()

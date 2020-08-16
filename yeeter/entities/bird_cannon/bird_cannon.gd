@@ -13,6 +13,11 @@ onready var egg_spawn = get_node(egg_spawn_path)
 export (NodePath) var power_bar_path
 onready var power_bar = get_node(power_bar_path)
 
+func _ready():
+	$EasySprite.hide();
+	$MediumSprite.hide();
+	$HardSprite.hide();
+
 func _get_vector(magnitude, angle):
 	var x_vector = _get_x_vector(magnitude, angle)
 	var y_vector = _get_y_vector(magnitude, angle)
@@ -57,3 +62,12 @@ func remap_range(input, minInput, maxInput, minOutput, maxOutput):
 
 func _on_remaining_none_remaining():
 	is_playing = false
+
+func set_difficulty(difficulty):
+	match difficulty:
+		"easy":
+			$EasySprite.show()
+		"medium":
+			$MediumSprite.show()
+		"hard":
+			$HardSprite.show()

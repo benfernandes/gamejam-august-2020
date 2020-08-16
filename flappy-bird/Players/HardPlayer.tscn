@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/basic-bird-flying-right.svg" type="Texture" id=1]
+[ext_resource path="res://assets/toucan-flying.svg" type="Texture" id=1]
 [ext_resource path="res://flappy-bird/Players/Player.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -32,21 +32,30 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=6]
-radius = 13.2419
+radius = 9.45789
 height = 24.3073
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 4.34238
+height = 6.53067
 
 [node name="HardPlayer" type="KinematicBody2D"]
 position = Vector2( 147.889, 241.434 )
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -6.78784, -3.5918 )
+position = Vector2( -6.78784, -3.40442 )
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 5 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -2.50284, -1.58517 )
+position = Vector2( -11.3054, 0.475021 )
 rotation = -2.15723
 shape = SubResource( 6 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 16.6687, -10.1136 )
+rotation = -1.33343
+shape = SubResource( 7 )

@@ -39,6 +39,21 @@ margin_bottom = 61.4057
 [node name="nest" parent="." instance=ExtResource( 2 )]
 position = Vector2( 534.073, 248.559 )
 scale = Vector2( 0.402234, 0.402234 )
+
+[node name="end_overlay" parent="." instance=ExtResource( 7 )]
+
+[node name="back_button" type="Button" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 40.0
+margin_bottom = 40.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="game_finished" from="." to="." method="_on_yeeter_game_finished"]
 [connection signal="none_remaining" from="remaining" to="bird_cannon" method="_on_remaining_none_remaining"]
-[connection signal="none_remaining" from="remaining" to="." method="_on_remaining_none_remaining"]
 [connection signal="none_remaining" from="remaining" to="power_bar" method="_on_remaining_none_remaining"]
+[connection signal="none_remaining" from="remaining" to="." method="_on_remaining_none_remaining"]
+[connection signal="ready_to_end" from="end_overlay" to="." method="_on_end_overlay_ready_to_end"]
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]
