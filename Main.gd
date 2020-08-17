@@ -11,7 +11,7 @@ var current_game_name
 
 var flappy_text = "It's time to fly the nest and find somewhere to settle down.\n\nTap space to fly and avoid the obstacles!"
 var memory_text = "This place looks nice. Better build a nest!\n\nClick a card to flip it and reveal something you might want for your nest.\n\nFind all the matching pairs within the time limit to win the game!"
-var yeeter_text = "What a lovely nest! Well done. Now time to lay some eggs!\n\nHold space to lay an egg and use the left and right buttons to aim. Release the spacebar to  shoot the egg out.\n\nGet as many eggs as you can into the backet!"
+var yeeter_text = "What a lovely nest! Well done. Now time to lay some eggs!\n\nHold space to lay an egg and use the left and right buttons to aim. Release the spacebar to  shoot the egg out.\n\nGet as many eggs as you can into the nest!"
 var main_action_button_func = funcref(self, 'start_game')
 
 func _ready():

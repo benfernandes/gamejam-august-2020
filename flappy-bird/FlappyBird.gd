@@ -76,9 +76,9 @@ func start(difficulty):
 func _process(delta):
 	if !isStopped && goal_timer != null:
 		if prepare_goal_timer != null:
-			$Timer.text = str(stepify(prepare_goal_timer.time_left, 0.1))
+			$TimerNode/Timer.text = str(stepify(prepare_goal_timer.time_left, 0.1))
 		else:
-			$Timer.text = str(stepify(goal_timer.time_left + 2, 0.1))
+			$TimerNode/Timer.text = str(stepify(goal_timer.time_left + 2, 0.1))
 
 func increase_difficulty():
 	speed = speed + config.speed_increase

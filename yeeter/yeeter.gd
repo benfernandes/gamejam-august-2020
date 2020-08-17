@@ -37,6 +37,7 @@ func _ready():
 		"hard": 
 			config = hard_config
 	bird_cannon.set_difficulty(difficulty)
+	$Goal.text = "Goal: " + str(config.target_eggs) + " Eggs"
 	
 	target_eggs = config.target_eggs
 	$Music.play()

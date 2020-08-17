@@ -51,6 +51,15 @@ stream = ExtResource( 6 )
 
 [node name="LoseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+
+[node name="Goal" type="Label" parent="."]
+margin_left = 60.0
+margin_top = 440.0
+margin_right = 160.0
+margin_bottom = 460.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="none_remaining" from="remaining" to="bird_cannon" method="_on_remaining_none_remaining"]
 [connection signal="none_remaining" from="remaining" to="power_bar" method="_on_remaining_none_remaining"]
 [connection signal="none_remaining" from="remaining" to="." method="_on_remaining_none_remaining"]
