@@ -48,11 +48,10 @@ func add_match():
 
 func game_over():
 	var has_won = number_of_matches == max_matches
-	$HUD.display_result(has_won)
 	$Music.stop()
 	
 	var end_timer = Timer.new()
-	end_timer.set_wait_time(4)
+	end_timer.set_wait_time(2)
 	end_timer.set_one_shot(true)
 	self.add_child(end_timer)
 	end_timer.start()

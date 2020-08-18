@@ -88,7 +88,7 @@ func check_if_match():
 		get_parent().add_match()
 		
 	var waiting_timer = Timer.new()
-	waiting_timer.set_wait_time(1)
+	waiting_timer.set_wait_time(0.8)
 	waiting_timer.set_one_shot(true)
 	self.add_child(waiting_timer)
 	waiting_timer.start()

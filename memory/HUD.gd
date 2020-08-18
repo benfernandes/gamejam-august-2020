@@ -15,7 +15,3 @@ func update_matches(number_of_matches):
 func update_time_left(time):
 	var time_left_string = time_left_template % str(time)
 	$TimeLeftLabel.text = time_left_string
-	
-func display_result(win):
-	$ResultsContainer.show()
-	$ResultsContainer.get_node("Results").text = "You won! :)" if win else "You lost :("
