@@ -140,3 +140,7 @@ func create_timer(timeout, callback, shouldRepeat, params):
 	timer.set_one_shot(!shouldRepeat)
 	timer.start()
 	return timer
+
+
+func _on_FlapButton_button_down():
+	player.flap()
