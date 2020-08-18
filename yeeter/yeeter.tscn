@@ -60,6 +60,43 @@ margin_bottom = 460.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Left" type="Button" parent="."]
+margin_left = 180.0
+margin_top = 420.0
+margin_right = 280.0
+margin_bottom = 470.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "<-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="Button" parent="."]
+margin_left = 440.0
+margin_top = 420.0
+margin_right = 540.0
+margin_bottom = 470.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "->"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fire" type="Button" parent="."]
+margin_left = 300.0
+margin_top = 420.0
+margin_right = 420.0
+margin_bottom = 470.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Fire! (Hold)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="none_remaining" from="remaining" to="bird_cannon" method="_on_remaining_none_remaining"]
-[connection signal="none_remaining" from="remaining" to="power_bar" method="_on_remaining_none_remaining"]
 [connection signal="none_remaining" from="remaining" to="." method="_on_remaining_none_remaining"]
+[connection signal="none_remaining" from="remaining" to="power_bar" method="_on_remaining_none_remaining"]
+[connection signal="button_up" from="Fire" to="power_bar" method="_on_Fire_button_up"]

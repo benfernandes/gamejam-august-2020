@@ -14,7 +14,7 @@ onready var remaining = get_node(remaining_path)
 func _process(delta):
 	var new_value = value
 	
-	if Input.is_action_pressed("ui_select") && is_playing:
+	if (Input.is_action_pressed("ui_select") || get_parent().fire_button.pressed) && is_playing:
 		new_value += 2.5 * direction
 	else:
 		new_value -= 2.5
@@ -28,10 +28,18 @@ func _process(delta):
 		direction = 1
 	
 	if Input.is_action_just_released("ui_select") && is_playing:
-		if remaining.get_value() > 0:
-			bird_cannon.shoot()
-			remaining.decrement_value()
-			value = 0
+		shoot()
 
 func _on_remaining_none_remaining():
 	is_playing = false
+
+
+func _on_Fire_button_up():
+	if is_playing:
+		shoot()
+
+func shoot():
+	if remaining.get_value() > 0:
+		bird_cannon.shoot()
+		remaining.decrement_value()
+		value = 0

@@ -26,6 +26,7 @@ onready var remaining = get_node(remaining_path)
 # Bird cannon
 export (NodePath) var bird_cannon_path
 onready var bird_cannon = get_node(bird_cannon_path)
+onready var fire_button = $Fire
 
 func _ready():
 	print("Yeeter difficulty: " + difficulty)
@@ -45,6 +46,10 @@ func _ready():
 	
 func _process(delta):
 	if !is_finished:
+		if $Left.pressed:
+			bird_cannon.rotation_degrees -= 1
+		if $Right.pressed:
+			bird_cannon.rotation_degrees += 1
 		_try_to_trigger_end_screen()
 
 func _try_to_trigger_end_screen():
